@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edunari - Plataforma de Emprendimientos Universitarios</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Logo -->
+                <div class="header__logo">
+                    <a href="/" class="logo">
+                        <span class="logo__text">Edunari</span>
+                    </a>
+                </div>
+
+                <!-- Barra de búsqueda -->
+                <div class="header__search">
+                    <form class="search-form" role="search">
+                        <div class="search-input-wrapper">
+                            <input 
+                                type="search" 
+                                class="search-input" 
+                                placeholder="Buscar emprendimientos, productos..."
+                                aria-label="Buscar emprendimientos"
+                            >
+                            <button type="submit" class="search-button" aria-label="Buscar">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Navegación -->
+                <nav class="header__nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <button class="nav-button nav-button--login">
+                                Iniciar Sesión
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-button nav-button--register">
+                                Registro
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                                    <span>Menú</span>
+                                    <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Categorías</a>
+                                    <a href="#" class="dropdown-item">Emprendedores</a>
+                                    <a href="about.html" class="dropdown-item">¿Qué es Edunari?</a>
+                                    <a href="#" class="dropdown-item">Ayuda</a>
+                                    <a href="#" class="dropdown-item">Contacto</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <section class="hero">
+                <h1>Bienvenido a Edunari</h1>
+                <p>La plataforma moderna donde estudiantes universitarios promocionan sus emprendimientos y conectan con el mundo</p>
+            </section>
+        </div>
+        
+        <!-- Call to Action -->
+        <section class="cta-section">
+            <div class="container">
+                <div class="cta-content">
+                    <h2 class="cta-title">¿Quieres ser Pionero?</h2>
+                    <p class="cta-description">
+                        Únete a la revolución del emprendimiento universitario. Sé parte de los primeros en transformar la manera como los estudiantes conectan, venden y crecen.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#" class="cta-button cta-button--primary">Registrar Emprendimiento</a>
+                        <a href="#" class="cta-button cta-button--secondary">Explorar Productos</a>
+                    </div>
+                    <div class="cta-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">125+</span>
+                            <span class="stat-label">Emprendedores</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1,847</span>
+                            <span class="stat-label">Productos</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">12</span>
+                            <span class="stat-label">Categorías</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

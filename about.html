@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acerca de Edunari - Nuestra Propuesta</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Logo -->
+                <div class="header__logo">
+                    <a href="index.html" class="logo">
+                        <span class="logo__text">Edunari</span>
+                    </a>
+                </div>
+
+                <!-- Barra de búsqueda -->
+                <div class="header__search">
+                    <form class="search-form" role="search">
+                        <div class="search-input-wrapper">
+                            <input 
+                                type="search" 
+                                class="search-input" 
+                                placeholder="Buscar emprendimientos, productos..."
+                                aria-label="Buscar emprendimientos"
+                            >
+                            <button type="submit" class="search-button" aria-label="Buscar">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Navegación -->
+                <nav class="header__nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-button nav-button--link">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-button nav-button--login">
+                                Iniciar Sesión
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-button nav-button--register">
+                                Registro
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                                    <span>Menú</span>
+                                    <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Categorías</a>
+                                    <a href="#" class="dropdown-item">Emprendedores</a>
+                                    <a href="about.html" class="dropdown-item">¿Qué es Edunari?</a>
+                                    <a href="#" class="dropdown-item">Contacto</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="about-hero">
+            <div class="container">
+                <div class="about-hero__content">
+                    <h1 class="about-hero__title">Acerca de Edunari</h1>
+                    <p class="about-hero__subtitle">Transformando el emprendimiento universitario con tecnología</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Introducción -->
+        <section class="intro-section">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Nuestra Propuesta</h2>
+                    <div class="intro-grid">
+                        <div class="intro-text">
+                            <p class="intro-paragraph">
+                                En la Universidad Simón Bolívar, muchos estudiantes compaginan sus estudios con 
+                                jornadas laborales y emprendimientos personales como venta de postres, perfumes, 
+                                accesorios o artesanías. Aunque la universidad organiza ferias para dar visibilidad 
+                                a estos proyectos, no existe un canal permanente y accesible para consultarlos.
+                            </p>
+                            <p class="intro-paragraph">
+                                <strong>Edunari surge como una solución integral:</strong> una plataforma digital 
+                                que no solo centraliza y promueve los emprendimientos universitarios, sino que 
+                                también brinda herramientas para gestionar inventarios, ventas y análisis financieros.
+                            </p>
+                        </div>
+                        <div class="intro-visual">
+                            <div class="feature-card">
+                                <div class="feature-icon">🛒</div>
+                                <h3>Para Compradores</h3>
+                                <p>Explora catálogos, filtra por categorías y contacta emprendedores</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">📊</div>
+                                <h3>Para Emprendedores</h3>
+                                <p>Gestiona inventarios, automatiza ventas y genera reportes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problemática -->
+        <section class="problem-section">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Problemática Actual</h2>
+                    <p class="section-subtitle">Los emprendedores universitarios enfrentan desafíos críticos</p>
+                    
+                    <div class="problem-grid">
+                        <div class="problem-card">
+                            <div class="problem-header">
+                                <div class="problem-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12 2L2 7V10C2 16 6 20.9 12 22C18 20.9 22 16 22 10V7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M9 12L11 14L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="problem-title">Falta de Visibilidad</h3>
+                            </div>
+                            <ul class="problem-list">
+                                <li>No existe una plataforma unificada para consultar emprendimientos</li>
+                                <li>Las ferias presenciales son esporádicas y limitan el alcance</li>
+                                <li>Dependencia de redes sociales dispersas o boca a boca</li>
+                            </ul>
+                        </div>
+
+                        <div class="problem-card">
+                            <div class="problem-header">
+                                <div class="problem-icon">
+                                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M14 2H6C4.9 2 4 2.9 4 4V20C4 21.1 4.9 22 6 22H18C19.1 22 20 21.1 20 20V8L14 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M14 2V8H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16 13H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M16 17H8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <h3 class="problem-title">Gestión Ineficiente</h3>
+                            </div>
+                            <ul class="problem-list">
+                                <li>Métodos manuales para controlar inventarios</li>
+                                <li>Pérdida de stock o sobreproducción</li>
+                                <li>Falta de reportes financieros básicos</li>
+                                <li>Procesos de venta poco automatizados</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="impact-statement">
+                        <p>Esta doble problemática limita la <strong>sostenibilidad y profesionalización</strong> 
+                        de los emprendimientos, afectando su capacidad para competir, escalar o acceder a financiamiento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Objetivos -->
+        <section class="objectives-section">
+            <div class="container">
+                <div class="section-content">
+                    <h2 class="section-title">Nuestros Objetivos</h2>
+                    
+                    <div class="main-objective">
+                        <div class="objective-hero">
+                            <h3 class="objective-main-title">Objetivo General</h3>
+                            <div class="objective-subtitle">Nuestra Misión Central</div>
+                        </div>
+                        
+                        <div class="objective-content-grid">
+                            <div class="objective-main-text">
+                                <p class="objective-description">
+                                    Desarrollar e implementar una <strong>plataforma digital integral</strong> que revolucione 
+                                    el emprendimiento universitario, funcionando como:
+                                </p>
+                            </div>
+                            
+                            <div class="objective-features">
+                                <div class="objective-feature">
+                                    <div class="feature-icon-wrapper">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3 7V5C3 3.89 3.89 3 5 3H19C20.11 3 21 3.89 21 5V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M3 7H21L20 17H4L3 7Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M9 11V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M15 11V7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h4>Mercado Centralizado</h4>
+                                        <p>Para visibilizar y promover emprendimientos universitarios</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="objective-feature">
+                                    <div class="feature-icon-wrapper">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M9 12L11 14L16 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                            <path d="M21 12C21 16.97 16.97 21 12 21C7.03 21 3 16.97 3 12C3 7.03 7.03 3 12 3C16.97 3 21 7.03 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <div class="feature-content">
+                                        <h4>Sistema de Gestión</h4>
+                                        <p>Para administrar inventarios, ventas y finanzas de manera eficiente</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="objective-impact">
+                            <div class="impact-badge">
+                                <span class="impact-text">
+                                    <strong>Impacto:</strong> Optimizar la operatividad de los negocios estudiantiles y facilitar 
+                                    el acceso de compradores a productos y servicios únicos
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="specific-objectives">
+                        <h4 class="objectives-subtitle">Objetivos Específicos</h4>
+                        <div class="objectives-grid objectives-grid--primary">
+                            <div class="objective-item">
+                                <div class="objective-number">01</div>
+                                <h5>Espacio Digital</h5>
+                                <p>Crear un espacio para que emprendedores registren sus negocios y exhiban su marca con perfiles personalizados</p>
+                            </div>
+                            <div class="objective-item">
+                                <div class="objective-number">02</div>
+                                <h5>Búsqueda Avanzada</h5>
+                                <p>Ofrecer herramientas de búsqueda con filtros por categoría, precio y ubicación</p>
+                            </div>
+                            <div class="objective-item">
+                                <div class="objective-number">03</div>
+                                <h5>Gestión en Tiempo Real</h5>
+                                <p>Facilitar la publicación de productos con inventario actualizado en tiempo real</p>
+                            </div>
+                        </div>
+                        
+                        <div class="objectives-grid objectives-grid--secondary">
+                            <div class="objective-item">
+                                <div class="objective-number">04</div>
+                                <h5>Automatización Financiera</h5>
+                                <p>Automatizar la gestión con reportes de ingresos, egresos y alertas de stock</p>
+                            </div>
+                            <div class="objective-item">
+                                <div class="objective-number">05</div>
+                                <h5>Profesionalización</h5>
+                                <p>Promover la profesionalización y escalabilidad de los emprendimientos</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Edunari</h3>
+                    <p class="footer-tagline">Emprendimiento universitario digitalizado</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Inicio</a>
+                    <a href="about.html">¿Qué es Edunari?</a>
+                    <a href="#">Contacto</a>
+                    <a href="#">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

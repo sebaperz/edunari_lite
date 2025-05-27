@@ -1,0 +1,96 @@
+Categorías de Productos
+
+Alimentos
+Descripción: Comidas, bebidas o snacks preparados artesanalmente.
+Ejemplos: Postres, galletas, panecillos, jugos naturales, empanadas, salsas caseras.
+
+Bisutería y Manualidades
+Descripción: Accesorios personales y artículos decorativos hechos a mano.
+Ejemplos: Pulseras, collares, anillos, adornos de resina, bordados, origami.
+
+Bolsos y Maletas
+Descripción: Productos diseñados para cargar, transportar u organizar objetos personales.
+Ejemplos: Mochilas, bolsos tejidos, canguros, estuches, maletas de mano.
+
+Cuidado Personal y Belleza
+Descripción: Productos para el cuidado del cuerpo, estética o higiene.
+Ejemplos: Jabones artesanales, cremas naturales, exfoliantes, productos para el cabello.
+
+Deportes
+Descripción: Artículos relacionados con la práctica de ejercicio físico o actividades al aire libre.
+Ejemplos: Ropa deportiva, bandas de resistencia, termos, suplementos naturales.
+
+Electrodomésticos
+Descripción: Aparatos eléctricos de uso doméstico.
+Ejemplos: Licuadoras, cafeteras pequeñas, ventiladores, tostadoras, lámparas LED.
+
+Escuela
+Descripción: Artículos útiles para estudiantes y el entorno académico.
+Ejemplos: Cuadernos decorados, agendas, lápices personalizados, estuches.
+
+Hogar y Jardín
+Descripción: Elementos decorativos o funcionales para la casa o el jardín.
+Ejemplos: Macetas, velas, muebles artesanales, organizadores, plantas.
+
+Informática
+Descripción: Productos tecnológicos o accesorios relacionados con computación.
+Ejemplos: Mousepads personalizados, memorias USB, soportes para laptop, cables.
+
+Mascotas
+Descripción: Productos orientados al cuidado o entretenimiento de animales de compañía.
+Ejemplos: Collares, juguetes, snacks artesanales, ropa para mascotas.
+
+Moda Hombre
+Descripción: Prendas y accesorios diseñados para el público masculino.
+Ejemplos: Camisas, camisetas, relojes, gafas de sol, billeteras.
+
+Moda Mujeres
+Descripción: Ropa, calzado y complementos para el público femenino.
+Ejemplos: Vestidos, blusas, bolsos, zapatos, bufandas, carteras.
+
+Categorías de Servicios
+
+Asesoría Profesional
+Descripción: Servicios de orientación o consultoría especializada en diversas áreas.
+Ejemplos: Contabilidad, finanzas personales, orientación vocacional, gestión de proyectos.
+
+Diseño Gráfico
+Descripción: Creación de elementos visuales con fines estéticos o comunicativos.
+Ejemplos: Logos, banners, tarjetas de presentación, material para redes sociales.
+
+Edición de Fotos y Videos
+Descripción: Procesamiento y mejora de contenido visual digital.
+Ejemplos: Montajes, retoques, reels, videos promocionales, restauración de imágenes.
+
+Enseñanza
+Descripción: Transmisión de conocimientos, habilidades o acompañamiento académico.
+Ejemplos: Clases particulares, tutorías, cursos online, preparación de exámenes.
+
+Escritura y Traducción
+Descripción: Producción, corrección o adaptación de textos.
+Ejemplos: Artículos, correcciones ortotipográficas, traducción de documentos, redacción web.
+
+Fotografía
+Descripción: Captura y producción de imágenes profesionales.
+Ejemplos: Retratos, fotografía de producto, sesiones para redes sociales, eventos.
+
+Marketing
+Descripción: Servicios orientados a la promoción de productos, marcas o contenidos.
+Ejemplos: Estrategia digital, campañas en redes sociales, creación de contenido comercial.
+
+Música y Audio
+Descripción: Producción o edición de sonido, piezas musicales y material auditivo.
+Ejemplos: Jingles, podcasts, grabaciones de voz, mezcla de audio.
+
+Programación
+Descripción: Desarrollo de soluciones digitales y automatización de procesos.
+Ejemplos: Sitios web, aplicaciones, scripts personalizados, mantenimiento de plataformas.
+
+Reparaciones
+Descripción: Servicios técnicos o de mantenimiento.
+Ejemplos: Reparación de electrodomésticos, costura, cuidado de calzado, bicis.
+
+Salud y Bienestar
+Descripción: Servicios enfocados en el cuidado físico, emocional o espiritual.
+Ejemplos: Meditación guiada, masajes, clases de yoga, reiki, coaching personal.
+

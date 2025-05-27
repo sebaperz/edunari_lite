@@ -1,0 +1,47 @@
+id,nombre,categoria,tipo,emprendedor_nombre,emprendedor_carrera,emprendedor_semestre,emprendedor_instagram,emprendedor_email
+1,Dulces Artesanales María,alimentos,producto,María González,Ingeniería Química,8,@dulcesmaria,maria.dulces@gmail.com
+2,Sabores Naturales,alimentos,producto,Carlos Rodríguez,Ingeniería de Alimentos,6,@sabores_naturales,carlos.sabores@gmail.com
+3,Accesorios Únicos,bisuteria-manualidades,producto,Sofía López,Diseño Industrial,5,@accesorios_unicos,sofia.accesorios@gmail.com
+4,Arte en Papel,bisuteria-manualidades,producto,Diego Herrera,Arquitectura,4,@arte_papel,diego.papel@gmail.com
+5,Bolsos Artesanales,bolsos-maletas,producto,Camila Torres,Diseño de Modas,8,@bolsos_artesanales,camila.bolsos@gmail.com
+6,Maletas Personalizadas,bolsos-maletas,producto,Andrés Silva,Ingeniería Industrial,7,@maletas_personalizadas,andres.maletas@gmail.com
+7,Belleza Natural,cuidado-personal-belleza,producto,Natalia Vargas,Química,9,@belleza_natural,natalia.belleza@gmail.com
+8,Cosméticos Orgánicos,cuidado-personal-belleza,producto,Valentina Ruiz,Biología,6,@cosmeticos_organicos,valentina.cosmeticos@gmail.com
+9,Tech Deportivo,deportes,producto,Roberto Jiménez,Educación Física,7,@tech_deportivo,roberto.tech@gmail.com
+10,Fitness Pro,deportes,producto,Laura Mendoza,Kinesiología,5,@fitness_pro,laura.fitness@gmail.com
+11,Electro Hogar,electrodomesticos,producto,Miguel Torres,Ingeniería Eléctrica,8,@electro_hogar,miguel.electro@gmail.com
+12,Gadgets Smart,electrodomesticos,producto,Ana Martínez,Ingeniería Electrónica,6,@gadgets_smart,ana.gadgets@gmail.com
+13,Papelería Creativa,escuela,producto,Isabella Castro,Educación,7,@papeleria_creativa,isabella.papeleria@gmail.com
+14,Útiles Estudiantiles,escuela,producto,Alejandro Ruiz,Diseño Gráfico,4,@utiles_estudiantiles,alejandro.utiles@gmail.com
+15,Hogar Creativo,hogar-jardin,producto,Elena Morales,Arquitectura,6,@hogar_creativo,elena.hogar@gmail.com
+16,Jardín Verde,hogar-jardin,producto,Fernando López,Agronomía,8,@jardin_verde,fernando.jardin@gmail.com
+17,Tech Solutions,informatica,producto,David Herrera,Ingeniería en Sistemas,9,@tech_solutions,david.tech@gmail.com
+18,Accesorios PC,informatica,producto,Gabriela Silva,Ingeniería en Computación,5,@accesorios_pc,gabriela.pc@gmail.com
+19,Mascotas Felices,mascotas,producto,Patricia Ramírez,Veterinaria,7,@mascotas_felices,patricia.mascotas@gmail.com
+20,Pet Care,mascotas,producto,Ricardo Morales,Zootecnia,6,@pet_care,ricardo.pet@gmail.com
+21,Moda Masculina,moda-hombre,producto,Andrés Silva,Diseño de Modas,7,@moda_masculina,andres.moda@gmail.com
+22,Estilo Urbano,moda-hombre,producto,Carlos Mendoza,Mercadeo,5,@estilo_urbano,carlos.estilo@gmail.com
+23,Estilo Femenino,moda-mujeres,producto,Isabella Castro,Diseño de Modas,8,@estilo_femenino,isabella.estilo@gmail.com
+24,Moda Chic,moda-mujeres,producto,Valentina Torres,Diseño Textil,6,@moda_chic,valentina.moda@gmail.com
+25,Asesoría Profesional,asesoria-profesional,servicio,Luis González,Administración,9,@asesoria_profesional,luis.asesoria@gmail.com
+26,Consultoría Empresarial,asesoria-profesional,servicio,María Rodríguez,Contaduría,8,@consultoria_empresarial,maria.consultoria@gmail.com
+27,Diseño Gráfico Pro,diseño-grafico,servicio,Carlos Mendoza,Diseño Gráfico,7,@diseño_pro,carlos.diseño@gmail.com
+28,Creatividad Visual,diseño-grafico,servicio,Sofía López,Comunicación Visual,6,@creatividad_visual,sofia.creatividad@gmail.com
+29,Edición Creativa,edicion-fotos-videos,servicio,Miguel Torres,Comunicación Social,8,@edicion_creativa,miguel.edicion@gmail.com
+30,Video Pro,edicion-fotos-videos,servicio,Ana Martínez,Cine y TV,5,@video_pro,ana.video@gmail.com
+31,Clases Particulares,enseñanza,servicio,Patricia Ramírez,Educación,7,@clases_particulares,patricia.clases@gmail.com
+32,Tutorías Académicas,enseñanza,servicio,Diego Herrera,Matemáticas,9,@tutorias_academicas,diego.tutorias@gmail.com
+33,Redacción Pro,escritura-traduccion,servicio,Elena Morales,Literatura,8,@redaccion_pro,elena.redaccion@gmail.com
+34,Traducciones Express,escritura-traduccion,servicio,Fernando López,Idiomas Modernos,6,@traducciones_express,fernando.traducciones@gmail.com
+35,Fotografía Creativa,fotografia,servicio,Miguel Torres,Comunicación Social,8,@foto_creativa,miguel.foto@gmail.com
+36,Retratos Profesionales,fotografia,servicio,Gabriela Silva,Artes Visuales,7,@retratos_profesionales,gabriela.retratos@gmail.com
+37,Marketing Digital,marketing,servicio,David Herrera,Mercadeo,9,@marketing_digital,david.marketing@gmail.com
+38,Social Media Pro,marketing,servicio,Laura Mendoza,Publicidad,5,@social_media_pro,laura.social@gmail.com
+39,Audio Pro,musica-audio,servicio,Ricardo Morales,Música,8,@audio_pro,ricardo.audio@gmail.com
+40,Sonido Creativo,musica-audio,servicio,Alejandro Ruiz,Ingeniería de Sonido,6,@sonido_creativo,alejandro.sonido@gmail.com
+41,Desarrollo Web,programacion,servicio,Alejandro Ruiz,Ingeniería en Sistemas,9,@dev_web,alejandro.dev@gmail.com
+42,Apps Móviles,programacion,servicio,David Herrera,Ingeniería de Software,7,@apps_moviles,david.apps@gmail.com
+43,Reparaciones Express,reparaciones,servicio,Roberto Jiménez,Ingeniería Mecánica,8,@reparaciones_express,roberto.reparaciones@gmail.com
+44,Fix It Pro,reparaciones,servicio,Carlos Mendoza,Tecnología,5,@fix_it_pro,carlos.fix@gmail.com
+45,Bienestar Integral,salud-bienestar,servicio,Natalia Vargas,Psicología,9,@bienestar_integral,natalia.bienestar@gmail.com
+46,Vida Saludable,salud-bienestar,servicio,Laura Mendoza,Nutrición,7,@vida_saludable,laura.vida@gmail.com 
