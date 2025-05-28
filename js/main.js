@@ -203,7 +203,7 @@ function redirectToResults(query, filters = {}) {
     });
     
     // Redirigir a la página de resultados
-    window.location.href = `results.html?${searchParams.toString()}`;
+    window.location.href = `search-results.html?${searchParams.toString()}`;
 }
 
 /**

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Búsqueda - Edunari</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/search-results.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Logo -->
+                <div class="header__logo">
+                    <a href="index.html" class="logo">
+                        <span class="logo__text">Edunari</span>
+                    </a>
+                </div>
+
+                <!-- Barra de búsqueda -->
+                <div class="header__search">
+                    <form class="search-form" role="search">
+                        <div class="search-input-wrapper">
+                            <input 
+                                type="search" 
+                                class="search-input" 
+                                id="searchInput"
+                                placeholder="Buscar emprendimientos, productos..."
+                                aria-label="Buscar emprendimientos"
+                            >
+                            <button type="submit" class="search-button" aria-label="Buscar">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Navegación -->
+                <nav class="header__nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <button class="nav-button nav-button--login">
+                                Iniciar Sesión
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-button nav-button--register">
+                                Registro
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                                    <span>Menú</span>
+                                    <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="#" class="dropdown-item">Categorías</a>
+                                    <a href="#" class="dropdown-item">Emprendedores</a>
+                                    <a href="about.html" class="dropdown-item">¿Qué es Edunari?</a>
+                                    <a href="#" class="dropdown-item">Ayuda</a>
+                                    <a href="#" class="dropdown-item">Contacto</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Sección de resultados de búsqueda -->
+            <section class="search-results-section">
+                <div class="search-results-header">
+                    <div class="search-title-row">
+                        <h1 class="search-results-title">Resultados de búsqueda:</h1>
+                        <span class="search-query-text" id="searchQueryText">-</span>
+                    </div>
+                    <div class="search-results-count">
+                        <span id="resultsCount">0</span> productos encontrados
+                    </div>
+                </div>
+
+                <!-- Filtros de búsqueda -->
+                <div class="search-filters">
+                    <div class="filter-group">
+                        <label for="productCategoryFilter" class="filter-label">Categoría de producto:</label>
+                        <select id="productCategoryFilter" class="filter-select">
+                            <option value="">Todas las categorías</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="serviceCategoryFilter" class="filter-label">Categoría de servicio:</label>
+                        <select id="serviceCategoryFilter" class="filter-select">
+                            <option value="">Todas las categorías</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="priceFilter" class="filter-label">Precio máximo:</label>
+                        <input type="range" id="priceFilter" class="filter-range" min="0" max="200000" step="5000" value="200000">
+                        <span class="price-display" id="priceDisplay">$200,000</span>
+                    </div>
+                    
+                    <button class="filter-clear" id="clearFilters">Limpiar filtros</button>
+                </div>
+
+                <!-- Indicador de carga -->
+                <div class="loading-indicator" id="loadingIndicator">
+                    <div class="loading-spinner"></div>
+                    <span>Cargando productos...</span>
+                </div>
+
+                <!-- Mensaje de sin resultados -->
+                <div class="no-results" id="noResults" style="display: none;">
+                    <div class="no-results-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>No se encontraron productos</h3>
+                    <p>Intenta con otros términos de búsqueda o ajusta los filtros.</p>
+                </div>
+
+                <!-- Grid de productos -->
+                <div class="products-grid" id="productsGrid">
+                    <!-- Los productos se cargarán dinámicamente aquí -->
+                </div>
+
+                <!-- Paginación -->
+                <div class="pagination" id="pagination" style="display: none;">
+                    <button class="pagination-btn pagination-prev" id="prevPage" disabled>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M15 18L9 12L15 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        Anterior
+                    </button>
+                    
+                    <div class="pagination-info">
+                        <span id="currentPage">1</span> de <span id="totalPages">1</span>
+                    </div>
+                    
+                    <button class="pagination-btn pagination-next" id="nextPage">
+                        Siguiente
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 18L15 12L9 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+    <script src="js/search-results.js"></script>
+</body>
+</html> 
