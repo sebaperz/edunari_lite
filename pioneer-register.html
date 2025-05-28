@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Pioneros - Edunari</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <!-- Header con logo -->
+        <header class="auth-header">
+            <a href="index.html" class="auth-logo">
+                <span class="logo__text">Edunari</span>
+            </a>
+        </header>
+
+        <!-- Formulario de registro de pioneros -->
+        <main class="auth-main">
+            <div class="auth-card">
+                <div class="auth-card__header">
+                    <h1 class="auth-title">Registro de Pioneros</h1>
+                    <p class="auth-subtitle">Únete a los emprendimientos pioneros de Edunari</p>
+                </div>
+
+                <form class="auth-form" id="pioneerForm" novalidate>
+                    <!-- Información personal -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Información Personal</h3>
+                        
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">
+                                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Nombre Completo
+                            </label>
+                            <input 
+                                type="text" 
+                                id="fullName" 
+                                name="fullName" 
+                                class="form-input" 
+                                placeholder="Tu nombre completo"
+                                required
+                                autocomplete="name"
+                            >
+                            <div class="form-error" id="fullNameError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Correo Electrónico
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                placeholder="tu@email.com"
+                                required
+                                autocomplete="email"
+                            >
+                            <div class="form-error" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">
+                                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59344 1.99522 8.06544 2.16708 8.43945 2.48353C8.81346 2.79999 9.06681 3.23945 9.15999 3.72C9.33657 4.68007 9.63131 5.62273 10.04 6.53C10.1856 6.88792 10.2287 7.27691 10.1649 7.65088C10.1011 8.02485 9.93234 8.36811 9.67999 8.64L8.38999 9.93C9.93023 12.4135 12.5865 15.0697 15.07 16.61L16.36 15.32C16.6319 15.0676 16.9751 14.8988 17.3491 14.835C17.7231 14.7712 18.1121 14.8144 18.47 14.96C19.3773 15.3686 20.3199 15.6634 21.28 15.84C21.7658 15.9334 22.2094 16.1910 22.5265 16.5688C22.8437 16.9466 23.0122 17.4207 23 17.9V20.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Teléfono
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-input" 
+                                placeholder="Tu número de teléfono"
+                                required
+                                autocomplete="tel"
+                            >
+                            <div class="form-error" id="phoneError"></div>
+                        </div>
+                    </div>
+
+                    <!-- Términos y condiciones -->
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" class="checkbox-input" required>
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">
+                                Acepto recibir información sobre oportunidades de emprendimiento y actualizaciones de Edunari
+                            </span>
+                        </label>
+                        <div class="form-error" id="termsError"></div>
+                    </div>
+
+                    <button type="submit" class="auth-button auth-button--primary" id="registerButton">
+                        <span class="button-text">Registrarse</span>
+                        <div class="button-spinner" style="display: none;">
+                            <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                                    <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                    </button>
+
+                    <!-- Mensaje de éxito -->
+                    <div class="success-message" id="successMessage" style="display: none;">
+                        <div class="success-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <h3>¡Registro Exitoso!</h3>
+                        <p>Te has registrado como pionero de Edunari. Pronto nos pondremos en contacto contigo.</p>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="auth-page-footer">
+            <p>&copy; 2025 Edunari. Plataforma de emprendimiento universitario.</p>
+        </footer>
+    </div>
+
+    <script src="js/pioneer-register.js"></script>
+</body>
+</html> 

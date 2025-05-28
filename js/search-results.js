@@ -103,6 +103,10 @@ async function initSearchResults() {
         const sortOrder = urlParams.get('sortOrder') || CONFIG.SORT_ORDERS.NONE;
         const page = Math.max(1, parseInt(urlParams.get('page')) || 1);
         
+        // Nuevos parámetros para filtrado desde emprendimientos destacados
+        const category = urlParams.get('category') || '';
+        const featured = urlParams.get('featured') || '';
+        
         // Configurar estado inicial usando métodos controlados
         SearchState.updateQuery(query);
         SearchState.updateProductCategory(productCategory);
@@ -110,8 +114,56 @@ async function initSearchResults() {
         SearchState.updateSortOrder(sortOrder);
         SearchState.currentPage = page;
         
+        // Procesar filtrado por categoría desde emprendimientos destacados
+        if (category && !productCategory && !serviceCategory) {
+            // Mapear categorías de emprendimientos a filtros específicos
+            const categoryMapping = {
+                'alimentos': { type: 'product', value: 'alimentos' },
+                'reparaciones': { type: 'service', value: 'reparaciones' },
+                'bisuteria-manualidades': { type: 'product', value: 'bisuteria-manualidades' },
+                'enseñanza': { type: 'service', value: 'enseñanza' },
+                'moda-sostenible': { type: 'product', value: 'moda-sostenible' },
+                'tecnologia-educativa': { type: 'service', value: 'tecnologia-educativa' },
+                'diseño-grafico': { type: 'service', value: 'diseño-grafico' },
+                'moda-mujeres': { type: 'product', value: 'moda-mujeres' },
+                'cuidado-personal-belleza': { type: 'product', value: 'cuidado-personal-belleza' },
+                'programacion': { type: 'service', value: 'programacion' },
+                'fotografia': { type: 'service', value: 'fotografia' }
+            };
+            
+            const mappedCategory = categoryMapping[category];
+            if (mappedCategory) {
+                if (mappedCategory.type === 'product') {
+                    SearchState.updateProductCategory(mappedCategory.value);
+                } else if (mappedCategory.type === 'service') {
+                    SearchState.updateServiceCategory(mappedCategory.value);
+                }
+                
+                console.log(`🎯 Filtro automático aplicado: ${category} -> ${mappedCategory.type}: ${mappedCategory.value}`);
+            }
+        }
+        
+        // Procesar filtrado por emprendimiento destacado específico
+        if (featured) {
+            // Mapear emprendimientos destacados a términos de búsqueda
+            const featuredMapping = {
+                'ecosnacks': 'EcoSnacks',
+                'techrepair': 'TechRepair',
+                'artecraft': 'ArteCraft',
+                'codementor': 'CodeMentor',
+                'greenstyle': 'GreenStyle',
+                'studybuddy': 'StudyBuddy'
+            };
+            
+            const searchTerm = featuredMapping[featured];
+            if (searchTerm && !query) {
+                SearchState.updateQuery(searchTerm);
+                console.log(`🔍 Búsqueda automática aplicada: ${featured} -> ${searchTerm}`);
+            }
+        }
+        
         // Actualizar UI con la búsqueda
-        updateSearchQuery(query);
+        updateSearchQuery(SearchState.currentQuery);
         
         // Inicializar componentes en orden lógico
         initSearchForm();
@@ -778,13 +830,17 @@ function matchesSearchQuery(item, query) {
     
     if (queryTerms.length === 0) return true;
     
-    // Campos de búsqueda con valores seguros
+    // Campos de búsqueda con valores seguros - INCLUYE NOMBRE DE EMPRENDIMIENTO
     const searchFields = {
         nombre: (item.nombre || '').toLowerCase(),
         descripcion: (item.descripcion || '').toLowerCase(),
         business: (item.business?.nombre || '').toLowerCase(),
+        businessNombre: (item.business?.nombre || '').toLowerCase(), // Campo adicional para emprendimiento
         tags: (item.tags || '').toLowerCase(),
-        categoria: (item.categoria || '').toLowerCase()
+        categoria: (item.categoria || '').toLowerCase(),
+        // Incluir también los datos del emprendedor para búsquedas más amplias
+        emprendedorNombre: (item.business?.emprendedor_nombre || '').toLowerCase(),
+        emprendedorCarrera: (item.business?.emprendedor_carrera || '').toLowerCase()
     };
     
     // Obtener tags individuales de forma segura
@@ -793,6 +849,17 @@ function matchesSearchQuery(item, query) {
         .split(',')
         .map(tag => tag.trim())
         .filter(tag => tag.length > 0);
+    
+    // Si la búsqueda es exactamente el nombre del emprendimiento, dar prioridad
+    const businessName = (item.business?.nombre || '').toLowerCase();
+    if (businessName && normalizedQuery === businessName) {
+        return true;
+    }
+    
+    // Búsqueda parcial en el nombre del emprendimiento (más flexible)
+    if (businessName && businessName.includes(normalizedQuery)) {
+        return true;
+    }
     
     // Verificar si todos los términos de búsqueda coinciden (AND lógico)
     return queryTerms.every(term => {
@@ -807,7 +874,10 @@ function matchesSearchQuery(item, query) {
         // Búsqueda parcial en tags
         const matchesPartialTag = itemTags.some(tag => tag.includes(term));
         
-        return matchesFields || matchesExactTag || matchesPartialTag;
+        // Búsqueda en nombre de emprendimiento con diferentes variaciones
+        const matchesBusinessName = businessName.includes(term);
+        
+        return matchesFields || matchesExactTag || matchesPartialTag || matchesBusinessName;
     });
 }
 
@@ -830,14 +900,27 @@ function calculateRelevanceScore(item, query) {
     if (queryTerms.length === 0) return 0;
     
     let totalScore = 0;
+    const businessName = (item.business?.nombre || '').toLowerCase();
     
-    // Campos de búsqueda con diferentes pesos (importancia)
+    // BONUS ESPECIAL: Si la consulta coincide exactamente con el nombre del emprendimiento
+    if (businessName && normalizedQuery === businessName) {
+        totalScore += 50; // Bonus muy alto para coincidencia exacta
+    }
+    
+    // BONUS ALTO: Si la consulta está contenida en el nombre del emprendimiento
+    if (businessName && businessName.includes(normalizedQuery)) {
+        totalScore += 30;
+    }
+    
+    // Campos de búsqueda con diferentes pesos (importancia) - INCLUYE EMPRENDIMIENTO
     const searchFields = [
-        { field: (item.nombre || '').toLowerCase(), weight: 10 },
-        { field: (item.tags || '').toLowerCase(), weight: 8 },
-        { field: (item.categoria || '').toLowerCase(), weight: 6 },
-        { field: (item.descripcion || '').toLowerCase(), weight: 5 },
-        { field: (item.business?.nombre || '').toLowerCase(), weight: 3 }
+        { field: (item.business?.nombre || '').toLowerCase(), weight: 15 }, // PESO MÁS ALTO para emprendimiento
+        { field: (item.nombre || '').toLowerCase(), weight: 12 }, // Nombre del producto/servicio
+        { field: (item.tags || '').toLowerCase(), weight: 10 }, // Tags
+        { field: (item.categoria || '').toLowerCase(), weight: 8 }, // Categoría
+        { field: (item.descripcion || '').toLowerCase(), weight: 6 }, // Descripción
+        { field: (item.business?.emprendedor_nombre || '').toLowerCase(), weight: 4 }, // Emprendedor
+        { field: (item.business?.emprendedor_carrera || '').toLowerCase(), weight: 2 } // Carrera
     ];
     
     // Calcular score para cada término
@@ -845,26 +928,40 @@ function calculateRelevanceScore(item, query) {
         searchFields.forEach(({ field, weight }) => {
             if (field.includes(term)) {
                 // Bonus por coincidencia exacta de palabra completa
-                const exactWordMatch = new RegExp(`\\b${term}\\b`).test(field);
-                const bonus = exactWordMatch ? 2 : 1;
+                const exactWordMatch = new RegExp(`\\b${escapeRegex(term)}\\b`).test(field);
+                const bonus = exactWordMatch ? 2.5 : 1;
                 
                 // Bonus por posición (términos al inicio tienen mayor peso)
                 const position = field.indexOf(term);
-                const positionBonus = position === 0 ? 1.5 : 1;
+                const positionBonus = position === 0 ? 2 : (position < 10 ? 1.5 : 1);
                 
-                totalScore += weight * bonus * positionBonus;
+                // Bonus por longitud del término (términos más largos son más específicos)
+                const lengthBonus = term.length >= 5 ? 1.2 : 1;
+                
+                totalScore += weight * bonus * positionBonus * lengthBonus;
             }
         });
         
         // Bonus especial para tags exactos
         const itemTags = (item.tags || '').toLowerCase().split(',').map(t => t.trim());
         if (itemTags.includes(term)) {
-            totalScore += 15; // Bonus alto para tag exacto
+            totalScore += 20; // Bonus alto para tag exacto
+        }
+        
+        // Bonus adicional para coincidencias en el nombre del emprendimiento
+        if (businessName.includes(term)) {
+            const exactBusinessMatch = new RegExp(`\\b${escapeRegex(term)}\\b`).test(businessName);
+            totalScore += exactBusinessMatch ? 25 : 15;
         }
     });
     
+    // Bonus por disponibilidad
+    if (item.disponible === 'true') {
+        totalScore += 5;
+    }
+    
     // Normalizar score a escala 0-100
-    const maxPossibleScore = queryTerms.length * 50; // Estimación del score máximo
+    const maxPossibleScore = queryTerms.length * 80; // Estimación del score máximo ajustada
     return Math.min(100, (totalScore / maxPossibleScore) * 100);
 }
 

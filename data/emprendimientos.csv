@@ -148,4 +148,10 @@ id,nombre,tipo,emprendedor_nombre,emprendedor_carrera,emprendedor_semestre,empre
 147,Nutrición Clínica,servicio,Natalia Sánchez,Nutrición,8,@nutricion_clinica,natalia.nutricion@gmail.com
 148,Entrenamiento Personal,servicio,Carlos Ospina,Educación Física,6,@entrenamiento_personal,carlos.entrenamiento@gmail.com
 149,Fisioterapia,servicio,Andrea Rojas,Fisioterapia,7,@fisioterapia,andrea.fisio@gmail.com
-150,Medicina Deportiva,servicio,Julián Peña,Medicina,4,@medicina_deportiva,julian.medicina@gmail.com 
+150,Medicina Deportiva,servicio,Julián Peña,Medicina,4,@medicina_deportiva,julian.medicina@gmail.com
+151,EcoSnacks,producto,Ana Lucía Morales,Ingeniería de Alimentos,7,@ecosnacks_oficial,ana.ecosnacks@gmail.com
+152,TechRepair,servicio,Miguel Ángel Ruiz,Ingeniería Electrónica,8,@techrepair_pro,miguel.techrepair@gmail.com
+153,ArteCraft,producto,Sofía Alejandra Vega,Artes Plásticas,6,@artecraft_handmade,sofia.artecraft@gmail.com
+154,CodeMentor,servicio,Carlos Eduardo Jiménez,Ingeniería de Sistemas,9,@codementor_tutoring,carlos.codementor@gmail.com
+155,GreenStyle,producto,Isabella María Castillo,Diseño de Modas,5,@greenstyle_eco,isabella.greenstyle@gmail.com
+156,StudyBuddy,servicio,Alejandro David Torres,Ingeniería de Software,8,@studybuddy_app,alejandro.studybuddy@gmail.com 
