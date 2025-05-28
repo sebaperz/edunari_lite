@@ -47,8 +47,27 @@
 }
 
 .search-results-count {
+    color: var(--color-gray-600);
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-4);
+}
+
+.search-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
     color: var(--color-gray-500);
-    font-size: var(--font-size-base);
+    font-size: var(--font-size-xs);
+    margin-bottom: var(--spacing-4);
+    padding: var(--spacing-2) var(--spacing-3);
+    background-color: var(--color-blue-50);
+    border-radius: var(--border-radius-md);
+    border-left: 3px solid var(--color-blue-300);
+}
+
+.search-info svg {
+    flex-shrink: 0;
+    color: var(--color-blue-500);
 }
 
 /* === FILTROS === */
@@ -138,22 +157,6 @@
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-primary);
-}
-
-.filter-clear {
-    padding: var(--spacing-2) var(--spacing-4);
-    background-color: var(--color-gray-100);
-    border: 1px solid var(--color-gray-300);
-    border-radius: var(--border-radius-md);
-    font-size: var(--font-size-sm);
-    color: var(--color-gray-700);
-    cursor: pointer;
-    transition: all var(--transition-fast);
-}
-
-.filter-clear:hover {
-    background-color: var(--color-gray-200);
-    border-color: var(--color-gray-400);
 }
 
 /* === INDICADORES DE ESTADO === */
@@ -378,6 +381,17 @@
     overflow: hidden;
 }
 
+.product-card__description {
+    font-size: var(--font-size-sm);
+    color: var(--color-gray-600);
+    margin-bottom: var(--spacing-3);
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
 .product-card__price {
     font-size: var(--font-size-xl);
     font-weight: 700;
@@ -403,7 +417,7 @@
 .business-icon {
     width: 16px;
     height: 16px;
-    color: var(--color-gray-400);
+    flex-shrink: 0;
 }
 
 .product-card__business-name {
@@ -414,16 +428,93 @@
     display: flex;
     flex-wrap: wrap;
     gap: var(--spacing-1);
-    margin-top: var(--spacing-3);
+    margin-bottom: var(--spacing-3);
 }
 
 .product-tag {
     background-color: var(--color-gray-100);
-    color: var(--color-gray-600);
+    color: var(--color-gray-700);
+    padding: 2px 8px;
+    border-radius: var(--border-radius-full);
     font-size: var(--font-size-xs);
-    padding: var(--spacing-1) var(--spacing-2);
-    border-radius: var(--border-radius-sm);
     font-weight: 500;
+    transition: all var(--transition-fast);
+}
+
+.product-tag--highlighted {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    font-weight: 600;
+    box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.product-tag--more {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-500);
+    font-style: italic;
+}
+
+.product-card__relevance {
+    margin-bottom: var(--spacing-2);
+    text-align: right;
+}
+
+.product-card__relevance small {
+    color: var(--color-gray-500);
+    font-size: var(--font-size-xs);
+    background-color: var(--color-gray-50);
+    padding: 2px 6px;
+    border-radius: var(--border-radius-sm);
+}
+
+/* Badges para servicios y disponibilidad */
+.service-badge,
+.unavailable-badge {
+    position: absolute;
+    top: var(--spacing-2);
+    right: var(--spacing-2);
+    padding: 4px 8px;
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.service-badge {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+.unavailable-badge {
+    background-color: var(--color-red-500);
+    color: white;
+}
+
+/* Resaltado de términos de búsqueda */
+.search-highlight {
+    background-color: #fef08a;
+    color: #854d0e;
+    padding: 1px 2px;
+    border-radius: 2px;
+    font-weight: 600;
+}
+
+/* Mejorar el resaltado en diferentes contextos */
+.product-card__name .search-highlight {
+    background-color: var(--color-primary-lighter);
+    color: var(--color-primary-dark);
+}
+
+.product-card__business-name .search-highlight {
+    background-color: var(--color-blue-100);
+    color: var(--color-blue-800);
+}
+
+.product-card__description .search-highlight {
+    background-color: #fef3c7;
+    color: #92400e;
 }
 
 .product-card__actions {
@@ -619,4 +710,233 @@
 .filter-select option:hover {
     background-color: var(--color-primary-lighter);
     color: var(--color-primary-dark);
+}
+
+/* Botón de ordenamiento por precio - Mejorado con mejores prácticas de CSS */
+.sort-button {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-4);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-white);
+    color: var(--color-gray-700);
+    font-size: var(--font-size-sm);
+    font-family: inherit; /* Heredar fuente del padre */
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    min-width: 160px;
+    justify-content: flex-start;
+    
+    /* Mejoras de accesibilidad */
+    outline: none;
+    position: relative;
+    
+    /* Soporte para usuarios que prefieren movimiento reducido */
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+/* Estados de hover y focus mejorados para accesibilidad */
+.sort-button:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-lighter);
+    color: var(--color-primary-dark);
+    transform: translateY(-1px); /* Efecto sutil de elevación */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sort-button:focus {
+    border-color: var(--color-primary);
+    box-shadow: 
+        0 0 0 3px rgb(13 148 136 / 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estados activos con mejor contraste visual */
+.sort-button[data-sort="asc"] {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+    font-weight: 600; /* Texto más prominente cuando está activo */
+}
+
+.sort-button[data-sort="desc"] {
+    background-color: var(--color-primary-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+    font-weight: 600;
+}
+
+/* Estados activos en hover */
+.sort-button[data-sort="asc"]:hover,
+.sort-button[data-sort="desc"]:hover {
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(13, 148, 136, 0.2);
+}
+
+/* Icono con transiciones suaves */
+.sort-icon {
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+    width: 16px;
+    height: 16px;
+    
+    /* Asegurar que el SVG se renderice correctamente */
+    display: block;
+}
+
+/* Rotaciones específicas para cada estado */
+.sort-button[data-sort="asc"] .sort-icon {
+    transform: rotate(0deg);
+    color: var(--color-primary-dark);
+}
+
+.sort-button[data-sort="desc"] .sort-icon {
+    transform: rotate(180deg);
+    color: var(--color-primary-dark);
+}
+
+/* Texto del botón */
+.sort-text {
+    font-weight: 500;
+    white-space: nowrap; /* Evitar que el texto se rompa */
+    user-select: none; /* Evitar selección accidental del texto */
+}
+
+/* Estados activos del texto */
+.sort-button[data-sort="asc"] .sort-text,
+.sort-button[data-sort="desc"] .sort-text {
+    font-weight: 600;
+}
+
+/* Botón de limpiar filtros mejorado */
+.filter-clear {
+    padding: var(--spacing-2) var(--spacing-4);
+    background-color: var(--color-gray-100);
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--border-radius-md);
+    font-size: var(--font-size-sm);
+    font-family: inherit;
+    color: var(--color-gray-700);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    
+    /* Mejoras de accesibilidad */
+    outline: none;
+    
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+    }
+}
+
+.filter-clear:hover {
+    background-color: var(--color-gray-200);
+    border-color: var(--color-gray-400);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter-clear:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgb(13 148 136 / 0.1);
+}
+
+.filter-clear:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Mejoras para dispositivos táctiles */
+@media (hover: none) and (pointer: coarse) {
+    .sort-button,
+    .filter-clear {
+        min-height: 44px; /* Tamaño mínimo recomendado para touch */
+        padding: var(--spacing-3) var(--spacing-4);
+    }
+    
+    .sort-button:hover,
+    .filter-clear:hover {
+        transform: none; /* Remover efectos de hover en dispositivos táctiles */
+    }
+}
+
+/* Soporte para modo oscuro */
+@media (prefers-color-scheme: dark) {
+    .sort-button {
+        background-color: var(--color-gray-800, #374151);
+        border-color: var(--color-gray-600, #6B7280);
+        color: var(--color-gray-200, #E5E7EB);
+    }
+    
+    .sort-button:hover {
+        background-color: var(--color-gray-700, #4B5563);
+        border-color: var(--color-primary, #0D9488);
+    }
+    
+    .sort-button[data-sort="asc"],
+    .sort-button[data-sort="desc"] {
+        background-color: var(--color-primary-dark, #0F766E);
+        border-color: var(--color-primary, #0D9488);
+        color: var(--color-primary-lighter, #5EEAD4);
+    }
+    
+    .filter-clear {
+        background-color: var(--color-gray-800, #374151);
+        border-color: var(--color-gray-600, #6B7280);
+        color: var(--color-gray-200, #E5E7EB);
+    }
+    
+    .filter-clear:hover {
+        background-color: var(--color-gray-700, #4B5563);
+        border-color: var(--color-gray-500, #9CA3AF);
+    }
+}
+
+/* Animaciones para feedback visual */
+@keyframes sortButtonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.98); }
+    100% { transform: scale(1); }
+}
+
+.sort-button:active {
+    animation: sortButtonPress 0.1s ease-in-out;
+}
+
+/* Estados de carga/disabled si es necesario */
+.sort-button:disabled,
+.filter-clear:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Mejoras para lectores de pantalla */
+.sort-button[aria-pressed="true"] {
+    /* Indicador visual adicional para estado activo */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Indicador de estado para usuarios de lectores de pantalla */
+.sort-button::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.sort-button[data-sort="asc"]::after,
+.sort-button[data-sort="desc"]::after {
+    opacity: 1;
 } 

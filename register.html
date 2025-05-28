@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Edunari</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="auth-body">
+    <div class="auth-container">
+        <!-- Header con logo -->
+        <header class="auth-header">
+            <a href="index.html" class="auth-logo">
+                <span class="logo__text">Edunari</span>
+            </a>
+        </header>
+
+        <!-- Formulario de registro -->
+        <main class="auth-main">
+            <div class="auth-card auth-card--register">
+                <div class="auth-card__header">
+                    <h1 class="auth-title">Crear Cuenta</h1>
+                    <p class="auth-subtitle">Únete a la comunidad de emprendedores universitarios</p>
+                </div>
+
+                <form class="auth-form" id="registerForm" novalidate>
+                    <!-- Información personal -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Información Personal</h3>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName" class="form-label">
+                                    <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    Nombre
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="firstName" 
+                                    name="firstName" 
+                                    class="form-input" 
+                                    placeholder="Tu nombre"
+                                    required
+                                    autocomplete="given-name"
+                                >
+                                <div class="form-error" id="firstNameError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="lastName" class="form-label">
+                                    <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    Apellido
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="lastName" 
+                                    name="lastName" 
+                                    class="form-input" 
+                                    placeholder="Tu apellido"
+                                    required
+                                    autocomplete="family-name"
+                                >
+                                <div class="form-error" id="lastNameError"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email" class="form-label">
+                                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <polyline points="22,6 12,13 2,6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Correo electrónico
+                            </label>
+                            <input 
+                                type="email" 
+                                id="email" 
+                                name="email" 
+                                class="form-input" 
+                                placeholder="tu@email.com"
+                                required
+                                autocomplete="email"
+                            >
+                            <div class="form-error" id="emailError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="form-label">
+                                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1468 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.59344 1.99522 8.06544 2.16708 8.43945 2.48353C8.81346 2.79999 9.06681 3.23945 9.15999 3.72C9.33657 4.68007 9.63131 5.62273 10.04 6.53C10.1856 6.88792 10.2287 7.27691 10.1649 7.65088C10.1011 8.02485 9.93234 8.36811 9.67999 8.64L8.38999 9.93C9.93023 12.4135 12.5865 15.0697 15.07 16.61L16.36 15.32C16.6319 15.0676 16.9751 14.8988 17.3491 14.835C17.7231 14.7712 18.1121 14.8144 18.47 14.96C19.3773 15.3686 20.3199 15.6634 21.28 15.84C21.7658 15.9334 22.2094 16.1910 22.5265 16.5688C22.8437 16.9466 23.0122 17.4207 23 17.9V20.92Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Teléfono
+                            </label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                class="form-input" 
+                                placeholder="+57 300 123 4567"
+                                autocomplete="tel"
+                            >
+                            <div class="form-error" id="phoneError"></div>
+                        </div>
+                    </div>
+
+                    <!-- Información académica -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Información Académica</h3>
+                        
+                        <div class="form-group">
+                            <label for="university" class="form-label">
+                                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M22 10V6L12 2L2 6V10L12 14L22 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 12V17C6 18.1046 9.13401 20 12 20C14.866 20 18 18.1046 18 17V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Universidad
+                            </label>
+                            <select id="university" name="university" class="form-input" required>
+                                <option value="">Selecciona tu universidad</option>
+                                <option value="universidad-nacional">Universidad Nacional de Colombia</option>
+                                <option value="universidad-andes">Universidad de los Andes</option>
+                                <option value="universidad-javeriana">Pontificia Universidad Javeriana</option>
+                                <option value="universidad-rosario">Universidad del Rosario</option>
+                                <option value="universidad-externado">Universidad Externado de Colombia</option>
+                                <option value="universidad-sabana">Universidad de La Sabana</option>
+                                <option value="universidad-minuto">Corporación Universitaria Minuto de Dios</option>
+                                <option value="universidad-catolica">Universidad Católica de Colombia</option>
+                                <option value="otra">Otra universidad</option>
+                            </select>
+                            <div class="form-error" id="universityError"></div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="program" class="form-label">
+                                    <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M2 3H8C9.06087 3 10.0783 3.42143 10.8284 4.17157C11.5786 4.92172 12 5.93913 12 7V21C12 20.2044 11.6839 19.4413 11.1213 18.8787C10.5587 18.3161 9.79565 18 9 18H2V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <path d="M22 3H16C14.9391 3 13.9217 3.42143 13.1716 4.17157C12.4214 4.92172 12 5.93913 12 7V21C12 20.2044 12.3161 19.4413 12.8787 18.8787C13.4413 18.3161 14.2044 18 15 18H22V3Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    Carrera
+                                </label>
+                                <input 
+                                    type="text" 
+                                    id="program" 
+                                    name="program" 
+                                    class="form-input" 
+                                    placeholder="Ej: Ingeniería de Sistemas"
+                                    required
+                                >
+                                <div class="form-error" id="programError"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="semester" class="form-label">
+                                    <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="16" y1="2" x2="16" y2="6" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="8" y1="2" x2="8" y2="6" stroke="currentColor" stroke-width="2"/>
+                                        <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    Semestre
+                                </label>
+                                <select id="semester" name="semester" class="form-input" required>
+                                    <option value="">Selecciona</option>
+                                    <option value="1">1° Semestre</option>
+                                    <option value="2">2° Semestre</option>
+                                    <option value="3">3° Semestre</option>
+                                    <option value="4">4° Semestre</option>
+                                    <option value="5">5° Semestre</option>
+                                    <option value="6">6° Semestre</option>
+                                    <option value="7">7° Semestre</option>
+                                    <option value="8">8° Semestre</option>
+                                    <option value="9">9° Semestre</option>
+                                    <option value="10">10° Semestre</option>
+                                    <option value="graduado">Graduado</option>
+                                </select>
+                                <div class="form-error" id="semesterError"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contraseña -->
+                    <div class="form-section">
+                        <h3 class="form-section-title">Seguridad</h3>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">
+                                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Contraseña
+                            </label>
+                            <div class="password-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="password" 
+                                    name="password" 
+                                    class="form-input" 
+                                    placeholder="••••••••"
+                                    required
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                >
+                                <button type="button" class="password-toggle" id="passwordToggle" aria-label="Mostrar contraseña">
+                                    <svg class="password-toggle__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="password-strength" id="passwordStrength">
+                                <div class="password-strength__bar">
+                                    <div class="password-strength__fill"></div>
+                                </div>
+                                <span class="password-strength__text">Mínimo 8 caracteres</span>
+                            </div>
+                            <div class="form-error" id="passwordError"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">
+                                <svg class="form-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="12" cy="16" r="1" fill="currentColor"/>
+                                    <path d="M7 11V7C7 5.67392 7.52678 4.40215 8.46447 3.46447C9.40215 2.52678 10.6739 2 12 2C13.3261 2 14.5979 2.52678 15.5355 3.46447C16.4732 4.40215 17 5.67392 17 7V11" stroke="currentColor" stroke-width="2"/>
+                                </svg>
+                                Confirmar contraseña
+                            </label>
+                            <div class="password-input-wrapper">
+                                <input 
+                                    type="password" 
+                                    id="confirmPassword" 
+                                    name="confirmPassword" 
+                                    class="form-input" 
+                                    placeholder="••••••••"
+                                    required
+                                    autocomplete="new-password"
+                                    minlength="8"
+                                >
+                                <button type="button" class="password-toggle" id="confirmPasswordToggle" aria-label="Mostrar contraseña">
+                                    <svg class="password-toggle__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M1 12S5 4 12 4S23 12 23 12S19 20 12 20S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
+                                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="form-error" id="confirmPasswordError"></div>
+                        </div>
+                    </div>
+
+                    <!-- Términos y condiciones -->
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="terms" name="terms" class="checkbox-input" required>
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">
+                                Acepto los <a href="#" class="auth-link">términos y condiciones</a> y la 
+                                <a href="#" class="auth-link">política de privacidad</a>
+                            </span>
+                        </label>
+                        <div class="form-error" id="termsError"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter" class="checkbox-input">
+                            <span class="checkbox-custom"></span>
+                            <span class="checkbox-text">
+                                Quiero recibir noticias y actualizaciones sobre emprendimiento
+                            </span>
+                        </label>
+                    </div>
+
+                    <button type="submit" class="auth-button auth-button--primary" id="registerButton">
+                        <span class="button-text">Crear Cuenta</span>
+                        <div class="button-spinner" style="display: none;">
+                            <svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="31.416" stroke-dashoffset="31.416">
+                                    <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
+                                    <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
+                                </circle>
+                            </svg>
+                        </div>
+                    </button>
+
+                    <div class="form-divider">
+                        <span>o regístrate con</span>
+                    </div>
+
+                    <div class="social-login">
+                        <button type="button" class="social-button social-button--google">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22.56 12.25C22.56 11.47 22.49 10.72 22.36 10H12V14.26H17.92C17.66 15.63 16.88 16.79 15.71 17.57V20.34H19.28C21.36 18.42 22.56 15.6 22.56 12.25Z" fill="#4285F4"/>
+                                <path d="M12 23C15.24 23 17.95 21.92 19.28 20.34L15.71 17.57C14.74 18.22 13.48 18.62 12 18.62C8.91 18.62 6.26 16.67 5.4 13.97H1.72V16.84C3.04 19.47 7.26 23 12 23Z" fill="#34A853"/>
+                                <path d="M5.4 13.97C5.18 13.32 5.06 12.62 5.06 11.9C5.06 11.18 5.18 10.48 5.4 9.83V6.96H1.72C0.99 8.42 0.6 10.11 0.6 11.9C0.6 13.69 0.99 15.38 1.72 16.84L5.4 13.97Z" fill="#FBBC05"/>
+                                <path d="M12 5.38C13.62 5.38 15.06 5.94 16.21 7.02L19.36 3.87C17.95 2.61 15.24 1.9 12 1.9C7.26 1.9 3.04 5.43 1.72 8.06L5.4 10.93C6.26 8.23 8.91 6.28 12 6.28V5.38Z" fill="#EA4335"/>
+                            </svg>
+                            Google
+                        </button>
+                        <button type="button" class="social-button social-button--microsoft">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect x="3" y="3" width="8" height="8" fill="#F25022"/>
+                                <rect x="13" y="3" width="8" height="8" fill="#7FBA00"/>
+                                <rect x="3" y="13" width="8" height="8" fill="#00A4EF"/>
+                                <rect x="13" y="13" width="8" height="8" fill="#FFB900"/>
+                            </svg>
+                            Microsoft
+                        </button>
+                    </div>
+                </form>
+
+                <div class="auth-footer">
+                    <p>¿Ya tienes cuenta? <a href="login.html" class="auth-link">Inicia sesión aquí</a></p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="auth-page-footer">
+            <p>&copy; 2024 Edunari. Plataforma de emprendimiento universitario.</p>
+        </footer>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html> 

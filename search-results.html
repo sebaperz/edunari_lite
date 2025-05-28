@@ -45,14 +45,14 @@
                 <nav class="header__nav">
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <button class="nav-button nav-button--login">
+                            <a href="login.html" class="nav-button nav-button--login">
                                 Iniciar Sesión
-                            </button>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-button nav-button--register">
+                            <a href="register.html" class="nav-button nav-button--register">
                                 Registro
-                            </button>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -89,6 +89,11 @@
                     <div class="search-results-count">
                         <span id="resultsCount">0</span> productos encontrados
                     </div>
+                    <div class="search-info">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 16V12M12 8H12.01M22 12C22 17.523 17.523 22 12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
                 </div>
 
                 <!-- Filtros de búsqueda -->
@@ -108,9 +113,15 @@
                     </div>
                     
                     <div class="filter-group">
-                        <label for="priceFilter" class="filter-label">Precio máximo:</label>
-                        <input type="range" id="priceFilter" class="filter-range" min="0" max="200000" step="5000" value="200000">
-                        <span class="price-display" id="priceDisplay">$200,000</span>
+                        <label for="sortByPrice" class="filter-label">Ordenar por precio:</label>
+                        <button type="button" id="sortByPrice" class="sort-button" data-sort="none">
+                            <svg class="sort-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M3 6H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M7 12H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M11 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <span class="sort-text">Sin ordenar</span>
+                        </button>
                     </div>
                     
                     <button class="filter-clear" id="clearFilters">Limpiar filtros</button>
