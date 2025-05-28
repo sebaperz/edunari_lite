@@ -495,11 +495,37 @@ function formatCategoryName(category) {
 function initSearchForm() {
     const searchForm = document.querySelector('.search-form');
     const searchInput = document.getElementById('searchInput');
+    const searchClear = document.querySelector('.search-clear');
     
     if (!searchForm || !searchInput) return;
     
     // Establecer valor inicial
     searchInput.value = SearchState.currentQuery;
+    
+    // Mostrar/ocultar botón de limpiar según el contenido inicial
+    if (searchClear) {
+        const hasText = SearchState.currentQuery.trim().length > 0;
+        searchClear.style.display = hasText ? 'flex' : 'none';
+        
+        // Manejar cambios en el input para mostrar/ocultar botón de limpiar
+        searchInput.addEventListener('input', function() {
+            const hasText = this.value.trim().length > 0;
+            searchClear.style.display = hasText ? 'flex' : 'none';
+        });
+        
+        // Manejar click en botón de limpiar
+        searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchClear.style.display = 'none';
+            searchInput.focus();
+            // Realizar búsqueda vacía
+            SearchState.updateQuery('');
+            SearchState.currentPage = 1;
+            updateSearchQuery('');
+            performSearch();
+            updateURL();
+        });
+    }
     
     // Manejar envío de formulario
     searchForm.addEventListener('submit', function(event) {

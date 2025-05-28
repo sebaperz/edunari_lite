@@ -4,7 +4,7 @@
  */
 
 // Configuración de la API
-const API_BASE_URL = 'http://localhost:8000/api';
+const API_BASE_URL = 'http://localhost:3000/api';
 
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', function() {
@@ -133,10 +133,30 @@ function initDropdown() {
 function initSearch() {
     const searchForm = document.querySelector('.search-form');
     const searchInput = document.querySelector('.search-input');
+    const searchClear = document.querySelector('.search-clear');
     
     if (!searchForm || !searchInput) {
         console.warn('Elementos de búsqueda no encontrados');
         return;
+    }
+    
+    // Verificar si hay texto inicial al cargar la página y mostrar/ocultar botón de limpiar
+    if (searchClear) {
+        const initialText = searchInput.value.trim();
+        searchClear.style.display = initialText.length > 0 ? 'flex' : 'none';
+        
+        // Manejar cambios en el input para mostrar/ocultar botón de limpiar
+        searchInput.addEventListener('input', function() {
+            const hasText = this.value.trim().length > 0;
+            searchClear.style.display = hasText ? 'flex' : 'none';
+        });
+        
+        // Manejar click en botón de limpiar
+        searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchClear.style.display = 'none';
+            searchInput.focus();
+        });
     }
     
     // Manejar envío del formulario de búsqueda

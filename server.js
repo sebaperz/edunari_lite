@@ -323,12 +323,16 @@ app.post('/api/pioneers', (req, res) => {
         
         const pioneersFile = path.join(DATA_DIR, 'pioneers.csv');
         const timestamp = new Date().toISOString();
-        const csvLine = `"${name}","${email}","${phone || ''}","${timestamp}"\n`;
         
-        // Crear archivo con headers si no existe
+        // Verificar si el archivo existe y tiene el formato correcto
         if (!fs.existsSync(pioneersFile)) {
-            fs.writeFileSync(pioneersFile, 'name,email,phone,timestamp\n', 'utf8');
+            // Crear archivo con headers en el formato original
+            const headers = 'Fecha y Hora,Nombre Completo,Correo Electrónico,Teléfono,Términos Aceptados\n';
+            fs.writeFileSync(pioneersFile, headers, 'utf8');
         }
+        
+        // Formatear línea CSV con el formato original
+        const csvLine = `${timestamp},"${name}",${email},${phone || ''},Sí\n`;
         
         fs.appendFileSync(pioneersFile, csvLine, 'utf8');
         

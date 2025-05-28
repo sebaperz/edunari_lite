@@ -86,8 +86,20 @@ class PioneerRegistration {
             this.showSuccess();
             this.resetForm();
         } catch (error) {
-            console.error('Error saving registration:', error);
-            this.showError('Hubo un error al procesar tu registro. Por favor, inténtalo de nuevo.');
+            console.error('❌ Error procesando registro:', error);
+            
+            // Mostrar mensaje de error más específico
+            let errorMessage = 'Hubo un error al procesar tu registro.';
+            
+            if (error.message.includes('servidor')) {
+                errorMessage = 'No se pudo conectar con el servidor. Los datos se guardaron localmente y serán procesados más tarde.';
+            } else if (error.message.includes('email')) {
+                errorMessage = 'Por favor verifica que el correo electrónico sea válido.';
+            } else if (error.message.includes('requeridos')) {
+                errorMessage = 'Por favor completa todos los campos obligatorios.';
+            }
+            
+            this.showError(errorMessage + ' Por favor, inténtalo de nuevo.');
         } finally {
             this.setLoadingState(false);
         }
@@ -233,10 +245,9 @@ class PioneerRegistration {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    fullName: data.fullName,
+                    name: data.fullName,
                     email: data.email,
-                    phone: data.phone,
-                    terms: data.terms
+                    phone: data.phone
                 })
             });
 
@@ -246,13 +257,13 @@ class PioneerRegistration {
                 throw new Error(result.message || 'Error al guardar los datos');
             }
 
-            console.log('Datos guardados exitosamente:', result);
+            console.log('✅ Datos guardados exitosamente en el servidor:', result);
             
             // También guardar en localStorage para backup
             this.saveToLocalStorage(data);
             
         } catch (error) {
-            console.error('Error al enviar datos al servidor:', error);
+            console.error('❌ Error al enviar datos al servidor:', error);
             
             // Fallback: guardar solo en localStorage si el servidor falla
             this.saveToLocalStorage(data);

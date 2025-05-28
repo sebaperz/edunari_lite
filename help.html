@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayuda - Edunari</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .help-hero {
+            background: linear-gradient(135deg, var(--color-gray-900) 0%, var(--color-gray-800) 100%);
+            color: var(--color-white);
+            padding: var(--spacing-12) 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .help-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon points="0,0 1000,300 1000,1000 0,700" fill="rgba(13,148,136,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .help-hero__content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .help-hero__title {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: var(--spacing-6);
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, var(--color-white) 0%, var(--color-primary-lighter) 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+        }
+        
+        .help-hero__emoji {
+            font-size: clamp(3rem, 10vw, 8rem);
+            margin-bottom: var(--spacing-4);
+            display: block;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .help-subtitle {
+            font-size: var(--font-size-lg);
+            opacity: 0.9;
+            color: var(--color-gray-200);
+            margin-top: var(--spacing-4);
+        }
+        
+        @media (max-width: 768px) {
+            .help-hero {
+                padding: var(--spacing-8) 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <!-- Logo -->
+                <div class="header__logo">
+                    <a href="index.html" class="logo">
+                        <span class="logo__text">Edunari</span>
+                    </a>
+                </div>
+
+                <!-- Barra de búsqueda -->
+                <div class="header__search">
+                    <form class="search-form" role="search">
+                        <div class="search-input-wrapper">
+                            <input 
+                                type="search" 
+                                class="search-input" 
+                                id="searchInput"
+                                placeholder="Buscar emprendimientos, productos..."
+                                aria-label="Buscar emprendimientos"
+                            >
+                            <button type="button" class="search-clear" aria-label="Limpiar búsqueda" style="display: none;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                            <button type="submit" class="search-button" aria-label="Buscar">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Navegación -->
+                <nav class="header__nav">
+                    <ul class="nav-list">
+                        <li class="nav-item">
+                            <a href="login.html" class="nav-button nav-button--login">
+                                Iniciar Sesión
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="register.html" class="nav-button nav-button--register">
+                                Registro
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="dropdown">
+                                <button class="dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+                                    <span>Menú</span>
+                                    <svg class="dropdown-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <a href="about.html" class="dropdown-item">¿Qué es Edunari?</a>
+                                    <a href="help.html" class="dropdown-item">Ayuda</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="help-hero">
+            <div class="container">
+                <div class="help-hero__content">
+                    <span class="help-hero__emoji">🔧</span>
+                    <h1 class="help-hero__title">Nosotros también necesitamos ayuda :(</h1>
+                    <p class="help-subtitle">¡Estamos trabajando en mejorar esta sección!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 class="footer-logo">Edunari</h3>
+                    <p class="footer-tagline">Emprendimiento universitario digitalizado</p>
+                </div>
+                <div class="footer-links">
+                    <a href="index.html">Inicio</a>
+                    <a href="about.html">¿Qué es Edunari?</a>
+                    <a href="help.html">Ayuda</a>
+                    <a href="#">Términos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html> 

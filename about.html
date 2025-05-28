@@ -28,9 +28,16 @@
                             <input 
                                 type="search" 
                                 class="search-input" 
+                                id="searchInput"
                                 placeholder="Buscar emprendimientos, productos..."
                                 aria-label="Buscar emprendimientos"
                             >
+                            <button type="button" class="search-clear" aria-label="Limpiar búsqueda" style="display: none;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </button>
                             <button type="submit" class="search-button" aria-label="Buscar">
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M21 21L16.514 16.506L21 21ZM19 10.5C19 15.194 15.194 19 10.5 19C5.806 19 2 15.194 2 10.5C2 5.806 5.806 2 10.5 2C15.194 2 19 5.806 19 10.5Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -44,17 +51,14 @@
                 <nav class="header__nav">
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="index.html" class="nav-button nav-button--link">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <button class="nav-button nav-button--login">
+                            <a href="login.html" class="nav-button nav-button--login">
                                 Iniciar Sesión
-                            </button>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <button class="nav-button nav-button--register">
+                            <a href="register.html" class="nav-button nav-button--register">
                                 Registro
-                            </button>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <div class="dropdown">
@@ -65,10 +69,8 @@
                                     </svg>
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a href="#" class="dropdown-item">Categorías</a>
-                                    <a href="#" class="dropdown-item">Emprendedores</a>
                                     <a href="about.html" class="dropdown-item">¿Qué es Edunari?</a>
-                                    <a href="#" class="dropdown-item">Contacto</a>
+                                    <a href="help.html" class="dropdown-item">Ayuda</a>
                                 </div>
                             </div>
                         </li>
