@@ -154,4 +154,35 @@ id,nombre,tipo,emprendedor_nombre,emprendedor_carrera,emprendedor_semestre,empre
 153,ArteCraft,producto,Sofía Alejandra Vega,Artes Plásticas,6,@artecraft_handmade,sofia.artecraft@gmail.com
 154,CodeMentor,servicio,Carlos Eduardo Jiménez,Ingeniería de Sistemas,9,@codementor_tutoring,carlos.codementor@gmail.com
 155,GreenStyle,producto,Isabella María Castillo,Diseño de Modas,5,@greenstyle_eco,isabella.greenstyle@gmail.com
-156,StudyBuddy,servicio,Alejandro David Torres,Ingeniería de Software,8,@studybuddy_app,alejandro.studybuddy@gmail.com 
+156,StudyBuddy,servicio,Alejandro David Torres,Ingeniería de Software,8,@studybuddy_app,alejandro.studybuddy@gmail.com
+157,Joyas Artísticas Plus,producto,Valentina Restrepo,Artes Plásticas,6,@joyas_artisticas_plus,valentina.joyas@gmail.com
+158,Delicias Gourmet,producto,Santiago Arbeláez,Gastronomía,7,@delicias_gourmet_co,santiago.delicias@gmail.com
+159,Belleza Verde,producto,Camila Escobar,Química,8,@belleza_verde_natural,camila.belleza@gmail.com
+160,Equipajes Modernos,producto,Nicolás Duarte,Diseño Industrial,5,@equipajes_modernos,nicolas.equipajes@gmail.com
+161,Estilo Sostenible,producto,Andrea Palacios,Ingeniería Ambiental,9,@estilo_sostenible_co,andrea.estilo@gmail.com
+162,Consultoría Joven,servicio,Felipe Ángel,Administración,8,@consultoria_joven,felipe.consultoria@gmail.com
+163,EduTech Solutions,servicio,Mariana Castro,Ingeniería de Sistemas,7,@edutech_solutions,mariana.edutech@gmail.com
+164,Creative Bijoux,producto,Juliana Montoya,Diseño de Modas,6,@creative_bijoux,juliana.bijoux@gmail.com
+165,Sabores Caseros Plus,producto,Daniel Vargas,Ingeniería de Alimentos,9,@sabores_caseros_plus,daniel.sabores@gmail.com
+166,Natura Skin,producto,Sofía Hernández,Biología,5,@natura_skin_co,sofia.natura@gmail.com
+167,Urban Bags,producto,Tomás Guerrero,Diseño Textil,8,@urban_bags_co,tomas.urban@gmail.com
+168,Eco Fashion,producto,Catalina Mejía,Diseño de Modas,7,@eco_fashion_co,catalina.eco@gmail.com
+169,Business Pro,servicio,Andrés Salazar,Contaduría,9,@business_pro_co,andres.business@gmail.com
+170,Learn Tech,servicio,Isabella Ramírez,Educación,6,@learn_tech_co,isabella.learn@gmail.com
+171,Accesorios Únicos Plus,producto,Alejandra Moreno,Artes Visuales,8,@accesorios_unicos_plus,alejandra.accesorios@gmail.com
+172,Cocina Artesanal,producto,Juan Pablo Rincón,Gastronomía,5,@cocina_artesanal_co,juanpablo.cocina@gmail.com
+173,Fresh Beauty,producto,Valeria Castañeda,Ingeniería Química,7,@fresh_beauty_co,valeria.fresh@gmail.com
+174,Luxury Leather,producto,Miguel Ángel Suárez,Diseño Industrial,9,@luxury_leather_co,miguel.luxury@gmail.com
+175,Green Living,producto,Natalia Osorio,Diseño Sostenible,6,@green_living_co,natalia.green@gmail.com
+176,Smart Business,servicio,Carlos Andrés Gil,Ingeniería Industrial,8,@smart_business_co,carlos.smart@gmail.com
+177,Digital Learning,servicio,Daniela Quintero,Comunicación Social,7,@digital_learning_co,daniela.digital@gmail.com
+178,Panadería Universitaria,producto,María José Ramírez,Gastronomía,6,@panaderia_universitaria,mariajose.panaderia@gmail.com
+179,Café Artesanal,producto,Diego Alejandro Sánchez,Ingeniería de Alimentos,8,@cafe_artesanal_co,diego.cafe@gmail.com
+180,Dulces Tradición,producto,Ana Sofía Mendoza,Gastronomía,5,@dulces_tradicion,anasofia.dulces@gmail.com
+181,Healthy Bowls,producto,Sebastián David López,Nutrición,7,@healthy_bowls_co,sebastian.healthy@gmail.com
+182,Postres Veganos,producto,Camila Andrea Torres,Gastronomía,9,@postres_veganos_co,camila.postres@gmail.com
+183,Empanadas Gourmet Plus,producto,Julián Esteban Ruiz,Ingeniería de Alimentos,6,@empanadas_gourmet_plus,julian.empanadas@gmail.com
+184,Bebidas Naturales Plus,producto,Valentina Isabel Castro,Química,8,@bebidas_naturales_plus,valentina.bebidas@gmail.com
+185,Snacks Fitness,producto,Andrés Felipe Herrera,Educación Física,5,@snacks_fitness_co,andres.snacks@gmail.com
+186,Comida Casera Express,producto,Natalia Carolina Morales,Gastronomía,7,@comida_casera_express,natalia.comida@gmail.com
+187,Helados Artesanales,producto,Santiago Nicolás Vargas,Ingeniería de Alimentos,9,@helados_artesanales_co,santiago.helados@gmail.com 
