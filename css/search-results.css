@@ -1004,38 +1004,7 @@
     transform: scale(1) translateY(0);
 }
 
-/* Modal Header */
-.product-modal__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: var(--spacing-6);
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-    color: white;
-    position: relative;
-    overflow: hidden;
-}
-
-.product-modal__header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100px;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1));
-    transform: skewX(-20deg);
-}
-
-.product-modal__title {
-    font-size: var(--font-size-xl);
-    font-weight: 700;
-    color: white;
-    margin: 0;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1;
-}
+/* Header CSS removed - no longer needed */
 
 .product-modal__close {
     display: flex;
@@ -1044,23 +1013,26 @@
     width: 44px;
     height: 44px;
     border: none;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     border-radius: 50%;
-    color: white;
+    color: var(--color-gray-600);
     cursor: pointer;
     transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    top: var(--spacing-4);
+    right: var(--spacing-4);
+    z-index: 100;
     backdrop-filter: blur(10px);
 }
 
 .product-modal__close:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--color-gray-800);
     transform: scale(1.1);
 }
 
 .product-modal__close:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.5);
+    outline: 3px solid var(--color-primary);
     outline-offset: 2px;
 }
 
@@ -1088,8 +1060,8 @@
 .product-modal__details {
     display: flex;
     flex-direction: row; /* Force horizontal layout - image left, info right */
-    height: calc(85vh - 120px);
-    max-height: calc(85vh - 120px);
+    height: calc(85vh - 40px); /* Adjusted for removed header */
+    max-height: calc(85vh - 40px);
     overflow: hidden;
     width: 100%;
     align-items: stretch; /* Make both sections same height */
@@ -1546,12 +1518,17 @@
 
 @media (max-width: 1000px) and (min-width: 601px) {
     .product-modal__details {
-        flex-direction: row; /* Ensure horizontal layout */
+        display: flex !important;
+        flex-direction: row !important; /* FORCE horizontal layout */
     }
     
     .product-modal__image-section {
-        width: 300px;
+        width: 300px !important;
+        min-width: 300px !important;
+        max-width: 300px !important;
+        flex: 0 0 300px !important;
         padding: var(--spacing-6);
+        order: 1 !important;
     }
     
     .product-modal__image {
@@ -1561,6 +1538,8 @@
     
     .product-modal__info-section {
         padding: var(--spacing-6);
+        flex: 1 1 auto !important;
+        order: 2 !important;
     }
 }
 
@@ -1575,8 +1554,8 @@
     
     .product-modal__details {
         flex-direction: column;
-        height: calc(90vh - 120px);
-        max-height: calc(90vh - 120px);
+        height: calc(90vh - 40px); /* Adjusted for removed header */
+        max-height: calc(90vh - 40px);
     }
     
     .product-modal__image-section {
@@ -1626,17 +1605,11 @@
     
     .product-modal__details {
         flex-direction: column;
-        height: calc(95vh - 100px);
-        max-height: calc(95vh - 100px);
+        height: calc(95vh - 40px); /* Adjusted for removed header */
+        max-height: calc(95vh - 40px);
     }
     
-    .product-modal__header {
-        padding: var(--spacing-4);
-    }
-    
-    .product-modal__title {
-        font-size: var(--font-size-lg);
-    }
+    /* Header CSS removed - no longer needed */
     
     .product-modal__image-section {
         padding: var(--spacing-4);
