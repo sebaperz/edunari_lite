@@ -303,6 +303,242 @@ app.get('/api/services', (req, res) => {
     }
 });
 
+// ==================== AUTENTICACIÓN DE USUARIOS ====================
+
+/**
+ * Leer usuarios del archivo CSV
+ */
+function getUsers() {
+    const usersFile = path.join(DATA_DIR, 'users.csv');
+    
+    if (!fs.existsSync(usersFile)) {
+        // Crear archivo con usuarios por defecto
+        const headers = 'email,password,nombre,apellido,numero_telefono\n';
+        const defaultUsers = 'admin@edunari.com,admin123,Administrador,Sistema,+56 9 8765 4321\ntest@test.com,password123,Juan,Pérez,+56 9 5555 1234\n';
+        fs.writeFileSync(usersFile, headers + defaultUsers, 'utf8');
+    }
+    
+    return parseCSV(usersFile);
+}
+
+/**
+ * Guardar usuarios al archivo CSV
+ */
+function saveUsers(users) {
+    const usersFile = path.join(DATA_DIR, 'users.csv');
+    
+    let csvContent = 'email,password,nombre,apellido,numero_telefono\n';
+    users.forEach(user => {
+        const nombre = user.nombre || '';
+        const apellido = user.apellido || '';
+        const numero_telefono = user.numero_telefono || '';
+        csvContent += `${user.email},${user.password},${nombre},${apellido},${numero_telefono}\n`;
+    });
+    
+    fs.writeFileSync(usersFile, csvContent, 'utf8');
+}
+
+/**
+ * Autenticar usuario
+ */
+app.post('/api/auth/login', (req, res) => {
+    try {
+        const { email, password } = req.body;
+        
+        if (!email?.trim() || !password?.trim()) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Email y contraseña son requeridos' 
+            });
+        }
+        
+        const users = getUsers();
+        const user = users.find(u => 
+            u.email.toLowerCase() === email.toLowerCase().trim() && 
+            u.password === password.trim()
+        );
+        
+        if (user) {
+            console.log(`✅ Login exitoso: ${email}`);
+            res.json({ 
+                success: true, 
+                message: 'Autenticación exitosa',
+                user: { 
+                    email: user.email,
+                    nombre: user.nombre || '',
+                    apellido: user.apellido || '',
+                    numero_telefono: user.numero_telefono || ''
+                }
+            });
+        } else {
+            console.log(`❌ Login fallido: ${email}`);
+            res.status(401).json({ 
+                success: false, 
+                message: 'Email o contraseña incorrectos' 
+            });
+        }
+        
+    } catch (error) {
+        console.error('❌ Error en login:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Error interno del servidor' 
+        });
+    }
+});
+
+/**
+ * Registrar nuevo usuario
+ */
+app.post('/api/auth/register', (req, res) => {
+    try {
+        const { email, password, nombre, apellido, numero_telefono } = req.body;
+        
+        if (!email?.trim() || !password?.trim()) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Email y contraseña son requeridos' 
+            });
+        }
+        
+        // Validar formato de email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email.trim())) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Formato de email inválido' 
+            });
+        }
+        
+        // Validar longitud de contraseña
+        if (password.trim().length < 6) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'La contraseña debe tener al menos 6 caracteres' 
+            });
+        }
+        
+        const users = getUsers();
+        
+        // Verificar si el usuario ya existe
+        const existingUser = users.find(u => 
+            u.email.toLowerCase() === email.toLowerCase().trim()
+        );
+        
+        if (existingUser) {
+            return res.status(409).json({ 
+                success: false, 
+                message: 'Ya existe una cuenta con este email' 
+            });
+        }
+        
+        // Agregar nuevo usuario
+        users.push({ 
+            email: email.toLowerCase().trim(), 
+            password: password.trim(),
+            nombre: nombre?.trim() || '',
+            apellido: apellido?.trim() || '',
+            numero_telefono: numero_telefono?.trim() || ''
+        });
+        
+        // Guardar usuarios
+        saveUsers(users);
+        
+        console.log(`👤 Usuario registrado: ${email}`);
+        
+        res.status(201).json({ 
+            success: true, 
+            message: 'Usuario registrado exitosamente',
+            user: { email: email.toLowerCase().trim() }
+        });
+        
+    } catch (error) {
+        console.error('❌ Error en registro:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Error interno del servidor' 
+        });
+    }
+});
+
+/**
+ * Verificar si un usuario existe
+ */
+app.get('/api/auth/check-user', (req, res) => {
+    try {
+        const { email } = req.query;
+        
+        if (!email?.trim()) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Email es requerido' 
+            });
+        }
+        
+        const users = getUsers();
+        const userExists = users.some(u => 
+            u.email.toLowerCase() === email.toLowerCase().trim()
+        );
+        
+        res.json({ 
+            success: true, 
+            exists: userExists 
+        });
+        
+    } catch (error) {
+        console.error('❌ Error verificando usuario:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Error interno del servidor' 
+        });
+    }
+});
+
+/**
+ * Obtener información del perfil de usuario
+ */
+app.get('/api/auth/profile', (req, res) => {
+    try {
+        const { email } = req.query;
+        
+        if (!email?.trim()) {
+            return res.status(400).json({ 
+                success: false, 
+                message: 'Email es requerido' 
+            });
+        }
+        
+        const users = getUsers();
+        const user = users.find(u => 
+            u.email.toLowerCase() === email.toLowerCase().trim()
+        );
+        
+        if (user) {
+            res.json({ 
+                success: true, 
+                user: {
+                    email: user.email,
+                    nombre: user.nombre || '',
+                    apellido: user.apellido || '',
+                    numero_telefono: user.numero_telefono || ''
+                }
+            });
+        } else {
+            res.status(404).json({ 
+                success: false, 
+                message: 'Usuario no encontrado' 
+            });
+        }
+        
+    } catch (error) {
+        console.error('❌ Error obteniendo perfil:', error);
+        res.status(500).json({ 
+            success: false, 
+            message: 'Error interno del servidor' 
+        });
+    }
+});
+
 // ==================== PIONEROS ====================
 
 /**
@@ -391,6 +627,10 @@ app.listen(PORT, () => {
     console.log(`   GET  /api/entrepreneurs`);
     console.log(`   GET  /api/products?category=categoria&limit=50`);
     console.log(`   GET  /api/services?category=categoria&limit=50`);
+    console.log(`   POST /api/auth/login`);
+    console.log(`   POST /api/auth/register`);
+    console.log(`   GET  /api/auth/check-user?email=email`);
+    console.log(`   GET  /api/auth/profile?email=email`);
     console.log(`   POST /api/pioneers`);
     console.log(`   GET  /api/pioneers`);
     console.log('');
