@@ -171,7 +171,104 @@
         </div>
     </main>
 
+    <!-- Popup de detalle del producto -->
+    <div class="product-modal" id="productModal" aria-hidden="true" role="dialog" aria-labelledby="modalTitle" aria-describedby="modalDescription">
+        <div class="product-modal__overlay" aria-label="Cerrar modal"></div>
+        <div class="product-modal__container">
+            <div class="product-modal__content">
+                <button class="product-modal__close" aria-label="Cerrar ventana de detalle" type="button">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
+                
+                <div class="product-modal__loading" id="modalLoading">
+                    <div class="loading-spinner"></div>
+                    <span>Cargando información del producto...</span>
+                </div>
+                
+                <div class="product-modal__details" id="modalDetails" style="display: none;">
+                    <!-- Imagen del producto -->
+                    <div class="product-modal__image-section">
+                        <div class="product-modal__image" id="modalImage">
+                            <div class="product-placeholder">
+                                <svg class="product-placeholder-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21 16V8C20.9996 7.64927 20.9071 7.30481 20.7315 7.00116C20.556 6.69751 20.3037 6.44536 20 6.27L13 2.27C12.696 2.09446 12.3511 2.00205 12 2.00205C11.6489 2.00205 11.304 2.09446 11 2.27L4 6.27C3.69626 6.44536 3.44398 6.69751 3.26846 7.00116C3.09294 7.30481 3.00036 7.64927 3 8V16C3.00036 16.3507 3.09294 16.6952 3.26846 16.9988C3.44398 17.3025 3.69626 17.5546 4 17.73L11 21.73C11.304 21.9055 11.6489 21.9979 12 21.9979C12.3511 21.9979 12.696 21.9055 13 21.73L20 17.73C20.3037 17.5546 20.556 17.3025 20.7315 16.9988C20.9071 16.6952 20.9996 16.3507 21 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M3.27 6.96L12 12.01L20.73 6.96" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M12 22.08V12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Información del producto -->
+                    <div class="product-modal__info-section">
+                        <div class="product-modal__main-info">
+                            <div class="product-modal__category" id="modalCategory"></div>
+                            <h3 class="product-modal__name" id="modalName"></h3>
+                            <div class="product-modal__price" id="modalPrice"></div>
+                            
+                            <div class="product-modal__availability" id="modalAvailability">
+                                <div class="availability-badge availability-badge--available">
+                                    <svg class="availability-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M20 6L9 17L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <span class="availability-text">Disponible</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-modal__description-section">
+                            <h4 class="product-modal__section-title">Descripción</h4>
+                            <p class="product-modal__description" id="modalDescription"></p>
+                        </div>
+                        
+                        <div class="product-modal__tags-section" id="modalTagsSection">
+                            <h4 class="product-modal__section-title">Características</h4>
+                            <div class="product-modal__tags" id="modalTags"></div>
+                        </div>
+                        
+                        <div class="product-modal__business-section">
+                            <h4 class="product-modal__section-title">Emprendimiento</h4>
+                            <div class="product-modal__business" id="modalBusiness">
+                                <div class="business-card">
+                                    <div class="business-card__avatar">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M19 21V5C19 4.4 18.6 4 18 4H6C5.4 4 5 4.4 5 5V21L12 18L19 21Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </div>
+                                    <div class="business-card__info">
+                                        <h5 class="business-card__name" id="modalBusinessName"></h5>
+                                        <p class="business-card__description" id="modalBusinessDescription"></p>
+                                        <div class="business-card__contact" id="modalBusinessContact">
+                                            <span class="business-contact__email" id="modalBusinessEmail"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-modal__actions">
+                            <button class="btn btn--primary btn--large" id="modalContactBtn" type="button">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Contactar emprendimiento
+                            </button>
+                            <button class="btn btn--secondary btn--large" id="modalCloseBtn" type="button">
+                                Cerrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="js/main.js"></script>
+    <script src="js/userSession.js"></script>
     <script src="js/search-results.js"></script>
 </body>
 </html> 

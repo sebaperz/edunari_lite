@@ -32,9 +32,17 @@
     
     /* Estados y feedback */
     --color-success: #059669;        /* Verde para éxito */
+    --color-success-light: #d1fae5;  /* Verde claro para backgrounds */
+    --color-success-dark: #047857;   /* Verde oscuro para texto */
     --color-warning: #f59e0b;        /* Amber para advertencias */
+    --color-warning-light: #fef3c7;  /* Amber claro para backgrounds */
+    --color-warning-dark: #d97706;   /* Amber oscuro para texto */
     --color-error: #dc2626;          /* Rojo para errores */
+    --color-error-light: #fee2e2;    /* Rojo claro para backgrounds */
+    --color-error-dark: #b91c1c;     /* Rojo oscuro para texto */
     --color-info: #0ea5e9;           /* Azul para información */
+    --color-info-light: #dbeafe;     /* Azul claro para backgrounds */
+    --color-info-dark: #0369a1;      /* Azul oscuro para texto */
     
     /* Tipografía */
     --font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -62,10 +70,13 @@
     --border-radius-md: 0.5rem;
     --border-radius-lg: 0.75rem;
     --border-radius-xl: 1rem;
+    --border-radius-full: 9999px;
     
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
     --shadow-teal: 0 4px 6px -1px rgb(13 148 136 / 0.1), 0 2px 4px -2px rgb(13 148 136 / 0.1);
     
     /* Transiciones */
@@ -980,5 +991,141 @@ body {
         width: 48px;
         height: 48px;
         margin-bottom: var(--spacing-3);
+    }
+}
+
+/* === USER MENU === */
+.nav-item--user {
+    position: relative;
+}
+
+.user-menu {
+    position: relative;
+}
+
+.user-menu__trigger {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-3);
+    background: none;
+    border: 1px solid var(--color-gray-300);
+    border-radius: var(--border-radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    color: var(--color-gray-700);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+.user-menu__trigger:hover {
+    background-color: var(--color-gray-50);
+    border-color: var(--color-gray-400);
+}
+
+.user-menu__trigger[aria-expanded="true"] {
+    background-color: var(--color-primary-lighter);
+    border-color: var(--color-primary);
+    color: var(--color-primary-dark);
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    background-color: var(--color-primary-lighter);
+    border-radius: 50%;
+    color: var(--color-primary-dark);
+}
+
+.user-email {
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.user-menu__dropdown {
+    position: absolute;
+    top: calc(100% + var(--spacing-2));
+    right: 0;
+    min-width: 200px;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all var(--transition-fast);
+    z-index: 1050;
+}
+
+.user-menu__dropdown--open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.user-menu__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    width: 100%;
+    padding: var(--spacing-3) var(--spacing-4);
+    border: none;
+    background: none;
+    text-align: left;
+    text-decoration: none;
+    color: var(--color-gray-700);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.user-menu__item:hover {
+    background-color: var(--color-gray-50);
+}
+
+.user-menu__item:first-child {
+    border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
+}
+
+.user-menu__item:last-child {
+    border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
+}
+
+.user-menu__logout {
+    color: var(--color-error);
+    border-top: 1px solid var(--color-gray-200);
+}
+
+.user-menu__logout:hover {
+    background-color: #fef2f2;
+}
+
+/* Media queries para el menú de usuario */
+@media (max-width: 768px) {
+    .user-email {
+        display: none;
+    }
+    
+    .user-menu__dropdown {
+        right: -50px;
+        min-width: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .user-menu__trigger {
+        padding: var(--spacing-2);
+    }
+    
+    .user-menu__dropdown {
+        right: -80px;
+        min-width: 160px;
     }
 } 

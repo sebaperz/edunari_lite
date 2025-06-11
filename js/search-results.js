@@ -1296,18 +1296,334 @@ function contactBusiness(email, businessName) {
 }
 
 /**
- * Ver detalles del item
+ * Ver detalles del item en modal
+ * Implementa una interfaz moderna y accesible siguiendo las mejores prácticas de UX
+ * @param {string} itemId - ID del producto/servicio
+ * @param {string} itemType - Tipo: 'producto' o 'servicio'
+ * 
+ * @see {@link https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement|Dialog Element - MDN}
+ * @see {@link https://www.w3.org/WAI/ARIA/apg/patterns/dialogmodal/|Modal Dialog Pattern - WAI-ARIA}
  */
 function viewItemDetails(itemId, itemType) {
-    // Buscar el item en la lista correspondiente
-    const item = SearchState.allItems.find(i => i.id === itemId && i.type === itemType);
-    if (item) {
-        const typeText = itemType === 'servicio' ? 'Servicio' : 'Producto';
-        const durationText = item.duracion ? `\nDuración: ${item.duracion}` : '';
-        const stockText = item.stock ? `\nStock: ${item.stock}` : '';
-        
-        alert(`${typeText}: ${item.nombre}\nPrecio: ${formatPrice(parseInt(item.precio))}\nDescripción: ${item.descripcion || 'No disponible'}${durationText}${stockText}`);
+    console.log('🔍 Opening modal for:', { itemId, itemType });
+    
+    const modal = document.getElementById('productModal');
+    
+    if (!modal) {
+        console.error('Modal element not found');
+        return;
     }
+    
+    // Convertir itemId a string para comparación consistente
+    const targetId = String(itemId);
+    
+    // Buscar el item en la lista correspondiente
+    const item = SearchState.allItems.find(i => String(i.id) === targetId && i.type === itemType);
+    
+    console.log('🔍 Searching for item:', { targetId, itemType });
+    console.log('📦 Found item:', item);
+    console.log('📊 Total items available:', SearchState.allItems.length);
+    
+    if (!item) {
+        console.error(`❌ Item not found: ${targetId} (${itemType})`);
+        console.log('🔍 Available items:', SearchState.allItems.map(i => ({ id: i.id, type: i.type, name: i.nombre })));
+        showError('Producto no encontrado');
+        return;
+    }
+    
+    // Abrir modal y mostrar loading
+    openModal(modal);
+    showModalLoading(true);
+    
+    // Simular carga de datos (en una app real, esto sería una llamada API)
+    setTimeout(() => {
+        populateModalWithItemData(item);
+        showModalLoading(false);
+    }, 300);
+}
+
+/**
+ * Abrir modal con manejo de accesibilidad
+ * @param {HTMLElement} modal - Elemento del modal
+ */
+function openModal(modal) {
+    if (!modal) return;
+    
+    // Aplicar clase para mostrar modal con animación
+    modal.classList.add('product-modal--open');
+    modal.setAttribute('aria-hidden', 'false');
+    
+    // Bloquear scroll del body
+    document.body.style.overflow = 'hidden';
+    
+    // Configurar focus trap
+    setupModalFocusTrap(modal);
+    
+    // Focus en el modal container para accesibilidad
+    const modalContent = modal.querySelector('.product-modal__content');
+    if (modalContent) {
+        modalContent.setAttribute('tabindex', '-1');
+        modalContent.focus();
+    }
+    
+    // Configurar event listeners
+    setupModalEventListeners(modal);
+}
+
+/**
+ * Cerrar modal con limpieza apropiada
+ * @param {HTMLElement} modal - Elemento del modal
+ */
+function closeModal(modal) {
+    if (!modal) return;
+    
+    // Remover clase y ocultar modal
+    modal.classList.remove('product-modal--open');
+    modal.setAttribute('aria-hidden', 'true');
+    
+    // Restaurar scroll del body
+    document.body.style.overflow = '';
+    
+    // Limpiar event listeners
+    cleanupModalEventListeners(modal);
+    
+    // Limpiar contenido del modal después de la animación
+    setTimeout(() => {
+        const detailsSection = modal.querySelector('#modalDetails');
+        if (detailsSection) {
+            detailsSection.style.display = 'none';
+        }
+    }, 300);
+}
+
+/**
+ * Mostrar/ocultar loading en modal
+ * @param {boolean} show - Mostrar loading state
+ */
+function showModalLoading(show) {
+    const loadingSection = document.getElementById('modalLoading');
+    const detailsSection = document.getElementById('modalDetails');
+    
+    if (loadingSection) {
+        loadingSection.style.display = show ? 'flex' : 'none';
+    }
+    
+    if (detailsSection) {
+        detailsSection.style.display = show ? 'none' : 'block';
+    }
+}
+
+/**
+ * Poblar modal con datos del item
+ * @param {Object} item - Datos del producto/servicio
+ */
+function populateModalWithItemData(item) {
+    try {
+        // Obtener elementos del modal
+        const elements = {
+            title: document.getElementById('modalTitle'),
+            category: document.getElementById('modalCategory'),
+            name: document.getElementById('modalName'),
+            price: document.getElementById('modalPrice'),
+            availability: document.getElementById('modalAvailability'),
+            description: document.getElementById('modalDescription'),
+            tags: document.getElementById('modalTags'),
+            tagsSection: document.getElementById('modalTagsSection'),
+            businessName: document.getElementById('modalBusinessName'),
+            businessDescription: document.getElementById('modalBusinessDescription'),
+            businessEmail: document.getElementById('modalBusinessEmail'),
+            contactBtn: document.getElementById('modalContactBtn')
+        };
+        
+        // Verificar que los elementos existen
+        const missingElements = Object.entries(elements)
+            .filter(([key, element]) => !element)
+            .map(([key]) => key);
+        
+        if (missingElements.length > 0) {
+            console.warn('Missing modal elements:', missingElements);
+        }
+        
+        // Poblar información básica
+        const typeText = item.type === 'servicio' ? 'Detalle del Servicio' : 'Detalle del Producto';
+        if (elements.title) elements.title.textContent = typeText;
+        
+        if (elements.category) {
+            elements.category.textContent = formatCategoryName(item.categoria || 'General');
+        }
+        
+        if (elements.name) {
+            elements.name.textContent = item.nombre || 'Sin nombre';
+        }
+        
+        if (elements.price) {
+            const price = parseInt(item.precio) || 0;
+            elements.price.textContent = formatPrice(price);
+        }
+        
+        // Manejo de disponibilidad
+        if (elements.availability) {
+            const isAvailable = item.disponible === 'true' || item.disponible === true;
+            const availabilityBadge = elements.availability.querySelector('.availability-badge');
+            const availabilityText = elements.availability.querySelector('.availability-text');
+            const availabilityIcon = elements.availability.querySelector('.availability-icon');
+            
+            if (availabilityBadge) {
+                availabilityBadge.className = isAvailable 
+                    ? 'availability-badge availability-badge--available'
+                    : 'availability-badge availability-badge--unavailable';
+            }
+            
+            if (availabilityText) {
+                availabilityText.textContent = isAvailable ? 'Disponible' : 'No disponible';
+            }
+            
+            if (availabilityIcon && !isAvailable) {
+                availabilityIcon.innerHTML = `
+                    <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                `;
+            }
+        }
+        
+        // Descripción
+        if (elements.description) {
+            const description = item.descripcion || 'Descripción no disponible';
+            elements.description.textContent = description;
+        }
+        
+        // Tags/Características
+        if (elements.tags && elements.tagsSection) {
+            const tags = item.tags ? item.tags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
+            
+            if (tags.length > 0) {
+                elements.tags.innerHTML = tags.map(tag => 
+                    `<span class="product-tag">${escapeHtml(tag)}</span>`
+                ).join('');
+                elements.tagsSection.style.display = 'block';
+            } else {
+                elements.tagsSection.style.display = 'none';
+            }
+        }
+        
+        // Información del emprendimiento
+        const business = item.business || {};
+        if (elements.businessName) {
+            elements.businessName.textContent = business.nombre || 'Emprendimiento no especificado';
+        }
+        
+        if (elements.businessDescription) {
+            elements.businessDescription.textContent = business.descripcion || 'Información no disponible';
+        }
+        
+        if (elements.businessEmail) {
+            const email = business.email || '';
+            elements.businessEmail.textContent = email || 'Contacto no disponible';
+            elements.businessEmail.style.display = email ? 'inline' : 'none';
+        }
+        
+        // Configurar botón de contacto
+        if (elements.contactBtn) {
+            const email = business.email;
+            const businessName = business.nombre || 'Emprendimiento';
+            
+            if (email) {
+                elements.contactBtn.onclick = () => contactBusiness(email, businessName);
+                elements.contactBtn.disabled = false;
+                elements.contactBtn.style.opacity = '1';
+            } else {
+                elements.contactBtn.onclick = () => alert('Información de contacto no disponible');
+                elements.contactBtn.disabled = true;
+                elements.contactBtn.style.opacity = '0.6';
+            }
+        }
+        
+        console.log('✅ Modal populated successfully with item data:', item.nombre);
+        
+    } catch (error) {
+        console.error('❌ Error populating modal:', error);
+        showError('Error al cargar los detalles del producto');
+    }
+}
+
+/**
+ * Configurar event listeners del modal
+ * @param {HTMLElement} modal - Elemento del modal
+ */
+function setupModalEventListeners(modal) {
+    const overlay = modal.querySelector('.product-modal__overlay');
+    const closeBtn = modal.querySelector('.product-modal__close');
+    const closeSecondaryBtn = document.getElementById('modalCloseBtn');
+    
+    // Cerrar al hacer click en overlay
+    if (overlay) {
+        overlay.addEventListener('click', () => closeModal(modal));
+    }
+    
+    // Cerrar con botón X
+    if (closeBtn) {
+        closeBtn.addEventListener('click', () => closeModal(modal));
+    }
+    
+    // Cerrar con botón secundario
+    if (closeSecondaryBtn) {
+        closeSecondaryBtn.addEventListener('click', () => closeModal(modal));
+    }
+    
+    // Cerrar con Escape
+    const escapeHandler = (event) => {
+        if (event.key === 'Escape') {
+            closeModal(modal);
+        }
+    };
+    
+    document.addEventListener('keydown', escapeHandler);
+    modal._escapeHandler = escapeHandler; // Guardar referencia para cleanup
+}
+
+/**
+ * Limpiar event listeners del modal
+ * @param {HTMLElement} modal - Elemento del modal
+ */
+function cleanupModalEventListeners(modal) {
+    if (modal._escapeHandler) {
+        document.removeEventListener('keydown', modal._escapeHandler);
+        delete modal._escapeHandler;
+    }
+}
+
+/**
+ * Configurar focus trap para accesibilidad
+ * @param {HTMLElement} modal - Elemento del modal
+ */
+function setupModalFocusTrap(modal) {
+    const focusableElements = modal.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
+    
+    if (!firstFocusable) return;
+    
+    const trapFocus = (event) => {
+        if (event.key === 'Tab') {
+            if (event.shiftKey) {
+                if (document.activeElement === firstFocusable) {
+                    event.preventDefault();
+                    lastFocusable?.focus();
+                }
+            } else {
+                if (document.activeElement === lastFocusable) {
+                    event.preventDefault();
+                    firstFocusable?.focus();
+                }
+            }
+        }
+    };
+    
+    modal.addEventListener('keydown', trapFocus);
+    modal._focusTrap = trapFocus; // Guardar referencia para cleanup
 }
 
 /**
